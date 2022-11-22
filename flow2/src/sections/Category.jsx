@@ -1,51 +1,32 @@
-
-import {
-    Container, Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionIcon,
-    AccordionPanel, Text, Box
-} from '@hope-ui/solid';
+import Question from './Question';
+import { createSignal } from 'solid-js';
+import { Button, Center, Container, Divider, Text } from '@hope-ui/solid';
+import { createStore } from "solid-js/store";
 
 function Category() {
-    return (
-        <div>
-            <Container>
-                <Box maxW={"50rem"} textAlign={"center"}>
-                    <Accordion>
-                        <AccordionItem>
-                            <h2>
-                                <AccordionButton>
-                                    <Text flex={1} fontWeight="$medium" textAlign="start">
-                                        Composable
-                                    </Text>
-                                    <AccordionIcon />
-                                </AccordionButton>
-                            </h2>
-                            <AccordionPanel>
-                                Compose your application interface with reusable building blocks.
-                            </AccordionPanel>
-                        </AccordionItem>
+  const [open, setOpene] = createSignal(0);
+  const [userObject, setUserObject] = createStore({})
 
-                        <AccordionItem>
-                            <h2>
-                                <AccordionButton>
-                                    <Text flex={1} fontWeight="$medium" textAlign="start">
-                                        Accessible
-                                    </Text>
-                                    <AccordionIcon />
-                                </AccordionButton>
-                            </h2>
-                            <AccordionPanel>
-                                Hope UI follows WAI-ARIA standards,
-                                helping you to reach the largest audience possible with less effort.
-                            </AccordionPanel>
-                        </AccordionItem>
-                    </Accordion>
-                </Box>
-            </Container>
-        </div>
-    );
+  return (
+    <div>
+        <Container>
+
+        <Center>
+        <Text size="3xl">
+            Lån ansøgning
+        </Text>
+        </Center>
+        <Divider></Divider>
+        <br />
+
+        <Center>
+
+      <Question queue={open} setOpen={setOpene} SetUserObject={setUserObject} userObject={userObject} />
+        </Center>
+        </Container>
+            
+    </div>
+  );
 }
 
 export default Category;
