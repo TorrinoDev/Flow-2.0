@@ -1,20 +1,36 @@
-import { Box, Stack, VStack, Heading, Center, Flex, Container, SimpleGrid} from "@hope-ui/solid"
+import { Box, Stack, VStack, Heading, Center, Flex, Container, SimpleGrid, HStack, Button, Spacer } from "@hope-ui/solid"
+import Category from "../Category"
+import { createSignal, Show } from "solid-js";
 
-function Homepage(){
-    return(
+const [showComponent, setShowComponent] = createSignal(false);
+
+const toggleComponent = () => setShowComponent(!showComponent());
+
+function Homepage() {
+
+    return (
         <div backgroundColor="gray">
-            <Container bg="lightgray" w="100vw" h="100vh">
-                <SimpleGrid columns={"3"} bg="red" h="100px">
-                    <Box/>
-                    <Box w="100%" h="100%">
-                    <Box>
-                        <Heading fontFamily="arial" fontWeight={"bold"} color="darkred" size="3xl">coop bank</Heading>
+            <Container bg="lightgray" w="100vw" minH="100vh">
+                <HStack bg="white" h="100px">
+                    <Box w="100%" h="100%" gridColumn={"2"} margin="10%">
+                        <Heading marginTop={"2%"} fontFamily="arial" fontWeight={"bold"} color="darkred" size="3xl">coop bank</Heading>
                     </Box>
-                    </Box>
-                    <Box/>
+                </HStack>
+                <SimpleGrid columns={"10"} marginTop="15%" marginBottom={"10%"}>
+                    <Button bgColor={"green"} gridColumn="7" onClick={toggleComponent}>Ansøg her</Button>
                 </SimpleGrid>
+                <Box w="100%" h="200px" bg={"darkred"} color="white" textAlign={"center"} marginBottom="50px">placerholdertext</Box>
+                <Show
+                    when={showComponent()}>
+                    <Container bg={"white"} w="800px" h={"500px"}>
+                        <Category />
+                    </Container>
+                </Show>
+                <Spacer h={"150px"} />
+                <Box w={"100%"} h="300px" bg={"dimgray"}>Her er en masse fyld</Box>
             </Container>
-        </div>       
+
+        </div>
     )
 }
 
