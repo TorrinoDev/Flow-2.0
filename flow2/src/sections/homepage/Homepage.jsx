@@ -28,7 +28,7 @@ function Homepage() {
                 <Box w="100%" h="200px" bg={"darkred"} color="white" textAlign={"center"} marginBottom="50px">placerholdertext</Box>
                 <Show
                     when={showComponent()}>                        
-                    <Container bg={"white"} w="800px" h={"100%"} paddingBottom="2%" ref={scroll}>
+                    <Container bg={"white"} maxW="800px" w="100%" h={"100%"} paddingBottom="2%" ref={scroll}>
                         <Category/>
                     </Container>
                 </Show>
