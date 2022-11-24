@@ -4,10 +4,16 @@ import { createSignal, Show } from "solid-js";
 
 const [showComponent, setShowComponent] = createSignal(false);
 
-const toggleComponent = () => setShowComponent(!showComponent());
-
 function Homepage() {
 
+    let scroll;
+
+    const handleScroll = () => {
+        console.log(scroll)
+
+        setShowComponent(true)
+      scroll.scrollIntoView({behavior: 'smooth'});
+    }
     return (
         <div backgroundColor="gray">
             <Container bg="lightgray" w="100vw" minH="100vh">
@@ -17,13 +23,13 @@ function Homepage() {
                     </Box>
                 </HStack>
                 <SimpleGrid columns={"10"} marginTop="15%" marginBottom={"10%"}>
-                    <Button bgColor={"green"} gridColumn="7" onClick={toggleComponent}>Ansøg her</Button>
+                    <Button bgColor={"green"} gridColumn="7" onClick={handleScroll}>Ansøg her</Button>
                 </SimpleGrid>
                 <Box w="100%" h="200px" bg={"darkred"} color="white" textAlign={"center"} marginBottom="50px">placerholdertext</Box>
                 <Show
-                    when={showComponent()}>
-                    <Container bg={"white"} w="800px" h={"100%"} paddingBottom="2%">
-                        <Category />
+                    when={showComponent()}>                        
+                    <Container bg={"white"} w="800px" h={"100%"} paddingBottom="2%" ref={scroll}>
+                        <Category/>
                     </Container>
                 </Show>
                 <Spacer h={"150px"} />
