@@ -1,3 +1,4 @@
+import { Center } from "@hope-ui/solid"
 
 export function RKInDebtQuestion() {
     return <div>
@@ -8,7 +9,6 @@ export function RKInDebtQuestion() {
         - Du ikke har fast bopæl i Danmark
     </div>
 }
-
 export function MitId() {
     return <div>
         Log på med MitID
@@ -67,4 +67,17 @@ export function AboutYourCoapplicant() {
         <br/>
         </h2>
             </div>
+}
+export function Employer() {
+    return <div>
+         <h2 style="text-align:center;color:#BA0409;font-size:25px">Vi skal vide lidt om din arbejdsgiver</h2>
+         <br />
+         <br />
+         <h2 style="text-align:center">Hvor er du ansat?</h2>
+    </div>
+}
+export function Employer2() {
+    return <div>
+        <h2 style="text-align:center">Hvornår blev du ansat i virksomheden?</h2>
+    </div>
 }
