@@ -15,15 +15,15 @@ function AnswerFlowDebt(props) {
             <RadioGroup>
                 <Center>
                     <HStack spacing={"2rem"}>
-                        <Radio colorScheme="primary" variant="filled" onInput={()=>setIsTrue(true)} >Ja</Radio>
-                        <Radio colorScheme="primary" variant="filled" onInput={()=>{setIsTrue(false);  setOpen(2);}} >Nej</Radio>
+                        <Radio colorScheme="primary" variant="filled" onInput={()=>setIsTrue(true)} id="debtJa" name='debtJaButton'>Ja</Radio>
+                        <Radio colorScheme="primary" variant="filled" onInput={()=>{setIsTrue(false);  setOpen(2);}} id="debtNej" name='debtNejButton'>Nej</Radio>
                     </HStack>
                 </Center>
             </RadioGroup>
             <br />
             {isTrue() && 
             <div>
-                <Input oninput={(event)=>SetUserObject({PublicDept:event.currentTarget.value})} placeholder='Hvor meget Gæld?' type='number'></Input> 
+                <Input id='debtInput' oninput={(event)=>SetUserObject({PublicDept:event.currentTarget.value})} placeholder='Hvor meget Gæld?' type='number'></Input> 
             </div> }
   <br/>
   <HStack spacing={"30rem"} justifyContent={"end"}>
