@@ -10,9 +10,9 @@ function AnswerFlowMitId(props) {
             <Input oninput={(event)=>SetUserObject({MitId:event.currentTarget.value})} placeholder='MitId Brugernavn'></Input>
         </Text>
         <br />
-        <HStack spacing={"30rem"}>
-    <Button colorScheme="success" onclick={()=> {setOpen(3);}}>Login</Button>
-  <Button colorScheme="danger" justifyContent={"end"} onclick={()=> setOpen(2)}>Tilbage</Button>
+        <HStack spacing={"28rem"}>
+  <Button colorScheme="danger" justifyContent={"end"} onclick={()=> setOpen(1)}>Tilbage</Button>
+  <Button colorScheme="success" onclick={()=> {setOpen(3);}}>Login</Button>
   </HStack>
     </div>
   );

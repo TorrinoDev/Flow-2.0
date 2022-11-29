@@ -6,10 +6,12 @@ import {
     AccordionIcon,
     AccordionPanel, Text, Box, valueToPercent
 } from '@hope-ui/solid';
+import AnswerFlowAboutYou from './AnswerDialog/AnswerFlowAboutYou';
 import AnswerFlowDebt from './AnswerDialog/AnswerFlowDebt';
 
 import AnswerFlowMitId from './AnswerDialog/AnswerFlowMitId';
 import AnswerFlowRki from './AnswerDialog/AnswerFlowRKI';
+
 
 function Question(props) {
     const { queue, setOpen, SetUserObject, userObject } = props
@@ -19,7 +21,7 @@ function Question(props) {
     return (
         <div>
 
-                <Box minW={"40rem"} maxW={"50rem"}>
+                <Box minW={"40rem"} maxW={"40rem"}>
                     <Accordion 
                      index={queue()}
                     >
@@ -40,7 +42,7 @@ function Question(props) {
                             <h2>
                                 <AccordionButton>
                                     <Text  fontWeight="$medium" textAlign="center">
-                                      Om Dig
+                                      Offentlig gæld
                                     </Text>
                                     <AccordionIcon />
                                 </AccordionButton>
@@ -60,6 +62,19 @@ function Question(props) {
                             </h2>
                             <AccordionPanel>
                                 <AnswerFlowMitId SetUserObject={SetUserObject} userObject={userObject} setOpen={setOpen}></AnswerFlowMitId>
+                            </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <h2>
+                                <AccordionButton>
+                                    <Text  fontWeight="$medium" textAlign="center">
+                                      Om dig
+                                    </Text>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </h2>
+                            <AccordionPanel>
+                                <AnswerFlowAboutYou SetUserObject={SetUserObject} userObject={userObject} setOpen={setOpen}></AnswerFlowAboutYou>
                             </AccordionPanel>
                         </AccordionItem>
                     </Accordion>
