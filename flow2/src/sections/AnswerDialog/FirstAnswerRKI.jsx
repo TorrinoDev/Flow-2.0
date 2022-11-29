@@ -81,3 +81,50 @@ export function Employer2() {
         <h2 style="text-align:center">Hvornår blev du ansat i virksomheden?</h2>
     </div>
 }
+export function Children() {
+    return <div>
+         <h2 style="text-align:center;font-size:25px"> <span style="color:#BA0409">Har du </span>hjemmeboende børn under 18 år<span style="color:#BA0409">?</span></h2>
+         <br />
+         <h2 style="text-align:center">Herunder også delebørn med folkeregisteradresse på din adresse</h2>
+    </div>
+}
+export function Cars(){
+    return <div>
+         <h2 style="text-align:center;font-size:25px"> <span style="color:#BA0409">Hvor mange </span>biler<span style="color:#BA0409"> er der </span>i din hunstand <span style="color:#BA0409">?</span></h2>
+         <br />
+        </div>
+}
+export function Residence() {
+    return <div>
+    <h2 style="text-align:center;color:#BA0409;font-size:25px">Hvordan bor du?</h2>
+    <br />
+    </div>
+}
+export function CoopMembership() {
+    return <div>
+        <h2 style="text-align:center;font-size:25px"> <span style="color:#BA0409">Er din husstand </span>medlem af Coop<span style="color:#BA0409">?</span></h2>
+    </div>
+}
+export function CoopMember() {
+    return <div>
+        <h2 style="text-align:center;font-size:25px;color:#BA0409">Hvad er medlemsnummeret?</h2>
+        <br/>
+        <h2 style="text-align:center">Medlemsnummeret står på dit medlemskort. Har du ikke dit kort, kan du logge på coop.dk og finde det under din profil eller ringe til Coop
+        Medlemsservice på
+        <br/>
+        43 86 20 20.</h2>
+        <br/>
+    </div>
+}
+export function AboutYouDone() {
+    return <div>
+        <h2 style="text-align:center;font-size:25px;color:#BA0409">Tak for det <br/> Nu skal vi vide lidt om din økonomi</h2>
+        <br/>
+        <h2 style="text-align:center">Det er en god idé at have din seneste lønseddel og din årsopgørelse klar.</h2>
+    </div>
+}
+export function NoEmployment() {
+    return <div>
+        <h2 style="text-align:center;font-size:25;color:#BA0409">Hvornår startede din ledighedsperiode?</h2>
+    </div>
+}

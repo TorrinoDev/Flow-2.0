@@ -1,10 +1,13 @@
-import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center } from '@hope-ui/solid';
+import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center , Divider} from '@hope-ui/solid';
 import { createSignal, Match, Show, Switch } from 'solid-js';
-import { MitId, RKInDebtQuestion, AboutYouIntro, AboutYouName, AboutYouMail, AboutYouPhone, NoPhone, AboutYourCitizenship, AboutYourRelationship, AboutYourCoapplicant, Employer, Employer2 } from './FirstAnswerRKI'
+import { MitId, RKInDebtQuestion, AboutYouIntro, AboutYouName, AboutYouMail, AboutYouPhone, NoPhone, AboutYourCitizenship, AboutYourRelationship, AboutYourCoapplicant, Employer, Employer2, Children, Cars, CoopMembership, CoopMember, AboutYouDone, NoEmployment } from './FirstAnswerRKI'
 import { FaSolidUserInjured } from 'solid-icons/fa'
 import { ImUsers } from 'solid-icons/im'
-import { EmploymentOptions } from './AboutYou/Employment';
+import { EmploymentMonth, EmploymentYear } from './AboutYou/Employment';
 import { Citizenships } from './AboutYou/Citizenship';
+import { Relationship } from './AboutYou/Relations';
+import { AiOutlineUserAdd } from 'solid-icons/ai'
+import { CoopMembershipComponent } from './AboutYou/CoopMembership';
 
 
 
@@ -55,18 +58,7 @@ function AnswerFlowAboutYou(props) {
           <Show when={x() === 3}>
             <Text>
               <AboutYourRelationship></AboutYourRelationship>
-              <Button
-                leftIcon={<FaSolidUserInjured />}
-                boxSize={128}
-                variant="default"
-                size="md"
-                height="150px"
-                width="150px"
-                borderWidth="2px"
-                borderColor="$neutral8"
-              >
-                Enlig
-              </Button>
+              <Relationship></Relationship>
 
             </Text>
           </Show>
@@ -81,7 +73,7 @@ function AnswerFlowAboutYou(props) {
                 
                 <HStack spacing="$40">
 
-                  <Button leftIcon={<FaSolidUserInjured boxSize={18} />}>Ja tak, tilføj medansøger</Button>
+                  <Button leftIcon={<AiOutlineUserAdd boxSize={18} />}>Ja tak, tilføj medansøger</Button>
                   <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); }}>
                     Nej tak, jeg ansøger alene
                   </Button>
@@ -95,10 +87,10 @@ function AnswerFlowAboutYou(props) {
         <Match when={x() === 5}>
           <Show when={x() === 5}>
             <Text>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />}>Funtionær</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />}>Selvstændig</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />}>Tjenestemand</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />}>Ledig</Button>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Funtionær</Button>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Selvstændig</Button>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Tjenestemand</Button>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 7); }}>Ledig</Button>
 
             </Text>
           </Show>
@@ -109,18 +101,85 @@ function AnswerFlowAboutYou(props) {
             <Employer></Employer>
             <Input oninput={(event) => SetUserObject({ Employer: event.currentTarget.value })} placeholder='Hvor er du ansat?'></Input>
             <Employer2></Employer2>
-           <EmploymentOptions></EmploymentOptions>
+           <EmploymentMonth></EmploymentMonth>
+           <br />
+           <Divider />
+           <br />
+           <EmploymentYear></EmploymentYear>
            
             </Text>
           </Show>
         </Match>
+        <Match when={x() === 7}>
+        <Show when={x() === 7}>
+          <Text>
+            <Children />
+          </Text>
+        </Show>
+        </Match>
+        <Match when={x() === 8}>
+        <Show when={x() === 8}>
+          <Text>
+            <Cars />
+          </Text>
+        </Show>
+        </Match>
+        <Match when={x() === 9}>
+        <Show when={x() === 9}>
+          <Text>
+            <CoopMembership/>
+            <CoopMembershipComponent></CoopMembershipComponent>
+          </Text>
+        </Show>
+        </Match>
+        <Match when={x() === 10}>
+        <Show when={x() === 10}>
+          <Text>
+            <CoopMember></CoopMember>
+            <CoopMembershipComponent></CoopMembershipComponent>
+            <Input oninput={(event) => SetUserObject({ CoopMember: event.currentTarget.value })} placeholder='Medlemsnummer'></Input>
+          </Text>
+        </Show>
+        </Match>
+        <Match when={x() === 11}>
+        <Show when={x() === 11}>
+          <Text>
+            <AboutYouDone/>
+            
+          </Text>
+        </Show>
+        </Match>
+        <Match when={x() === 12}>
+        <Show when={x() === 12}>
+          <Text>
+            <NoEmployment />
+            <br />
+            <EmploymentMonth />
+            <br />
+            <br />
+            <EmploymentYear />
+            <br />
+            <br />
+            <Center>
+            <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
+          </Center>
+        <br />
+          </Text>
+        </Show>
+        </Match>
       </Switch>
 
-      <Show when={x() !==4 } >
-
+    
+<br />
       <HStack spacing={"28rem"}>
-        
+
         <Button colorScheme="danger" justifyContent={"end"} onclick={() => {
+          if (x() === 12) {
+            setX(x() - 6);
+          }
+          if (x() === 7) {
+            setX(x() -1 );
+          }
           if (x() === 1) {
             setOpen(2);
           } else {
@@ -129,12 +188,15 @@ function AnswerFlowAboutYou(props) {
             }
           }
         }}>Tilbage</Button>
+          <Show when={x() !==4 } >
+            <Show when={x() !==12}>
         <Button colorScheme="success" onclick={() => { setX(x() + 1); }}>Næste</Button>
-        
+        </Show>
+        </Show>
       </HStack>
-      </Show>
+
       <br />
-      <Progress trackColor="$info3" value={x() * 10}>
+      <Progress trackColor="$info3" value={x() * 8}>
         <ProgressIndicator color="$info9" />
         <br />
       </Progress>

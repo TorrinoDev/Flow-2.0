@@ -1,4 +1,4 @@
-import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center } from '@hope-ui/solid';
+import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel } from '@hope-ui/solid';
 
 
 export function Relationship() {
@@ -12,7 +12,6 @@ export function Relationship() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
-            
         >
             Enlig
         </Button>
@@ -58,7 +57,6 @@ export function Relationship() {
             Enke-M/K
         </Button>
         </HStack>
-
     </>
     );
 }

@@ -26,9 +26,9 @@ function AnswerFlowDebt(props) {
                 <Input oninput={(event)=>SetUserObject({PublicDept:event.currentTarget.value})} placeholder='Hvor stor er din gæld til det offentlige?' type='number'></Input> 
             </div> }
   <br/>
-  <HStack spacing={"30rem"} justifyContent={"end"}>
-    {isTrue() && <Button colorScheme="success" onclick={()=> setOpen(2)}>Næste</Button>}
+  <HStack spacing={"28rem"} justifyContent={"end"}>
   <Button colorScheme="danger"  onclick={()=> setOpen(0)}>Tilbage</Button>
+  {isTrue() && <Button colorScheme="success" onclick={()=> setOpen(2)}>Næste</Button>}
   </HStack>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel } from '@hope-ui/solid';
+import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center } from '@hope-ui/solid';
 import { FaSolidMapPin } from 'solid-icons/fa'
 import { SimpleGrid } from "@hope-ui/solid"
 
@@ -8,7 +8,8 @@ export function Citizenships() {
     return (
 
 <>
-
+<Center>
+<HStack spacing={"0.5rem"}>
         <Button
             leftIcon={<FaSolidMapPin />}
             boxSize={128}
@@ -19,7 +20,7 @@ export function Citizenships() {
             borderWidth="2px"
             borderColor="$neutral8"
         >
-            DK
+            Dansk
         </Button>
         <Button
             
@@ -31,7 +32,8 @@ export function Citizenships() {
             borderWidth="2px"
             borderColor="$neutral8"
         >
-            Non-DK + Arb. Til
+            Udlænding med <br/>
+            arbejdstilladelse
         </Button>
         <Button
             
@@ -43,9 +45,11 @@ export function Citizenships() {
             borderWidth="2px"
             borderColor="$neutral8"
         >
-            Non-DK Non-Arb. Til
+            Udlænding uden <br/>
+            arbejdstilladelse
         </Button>
-
+</HStack>
+</Center>
         </>
 
         
