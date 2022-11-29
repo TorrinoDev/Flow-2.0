@@ -7,12 +7,12 @@ function AnswerFlowMitId(props) {
     <div>
         <Text>
             <MitId></MitId>
-            <Input oninput={(event)=>SetUserObject({MitId:event.currentTarget.value})} placeholder='MitId Brugernavn'></Input>
+            <Input id="brugernavnInput" oninput={(event)=>SetUserObject({MitId:event.currentTarget.value})} placeholder='MitId Brugernavn'></Input>
         </Text>
         <br />
         <HStack spacing={"28rem"}>
   <Button colorScheme="danger" justifyContent={"end"} onclick={()=> setOpen(1)}>Tilbage</Button>
-  <Button colorScheme="success" onclick={()=> {setOpen(3);}}>Login</Button>
+  <Button id="loginButton" colorScheme="success" onclick={()=> {setOpen(3);}}>Login</Button>
   </HStack>
     </div>
   );

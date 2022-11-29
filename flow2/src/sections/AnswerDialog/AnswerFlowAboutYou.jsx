@@ -24,17 +24,17 @@ function AnswerFlowAboutYou(props) {
             <Text>
               <AboutYouIntro></AboutYouIntro>
               <AboutYouName></AboutYouName>
-              <Input oninput={(event) => SetUserObject({ AboutYouName: event.currentTarget.value })} placeholder='Navn'></Input>
+              <Input id="navnInput" oninput={(event) => SetUserObject({ AboutYouName: event.currentTarget.value })} placeholder='Navn'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouMail></AboutYouMail>
-              <Input oninput={(event) => SetUserObject({ AboutYouMail: event.currentTarget.value })} placeholder='E-mail'></Input>
+              <Input id="emailInput" oninput={(event) => SetUserObject({ AboutYouMail: event.currentTarget.value })} placeholder='E-mail'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouPhone></AboutYouPhone>
-              <Input oninput={(event) => SetUserObject({ AboutYouPhone: event.currentTarget.value })} placeholder='Mobilnummer'></Input>
+              <Input id="mobilInput" oninput={(event) => SetUserObject({ AboutYouPhone: event.currentTarget.value })} placeholder='Mobilnummer'></Input>
             </Text>
             <br />
             <Text><NoPhone></NoPhone></Text>
