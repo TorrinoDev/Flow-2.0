@@ -23,11 +23,7 @@ function AnswerFlowDebt(props) {
             <br />
             {isTrue() && 
             <div>
-<<<<<<< HEAD
-                <Input id='debtInput' oninput={(event)=>SetUserObject({PublicDept:event.currentTarget.value})} placeholder='Hvor meget Gæld?' type='number'></Input> 
-=======
-                <Input oninput={(event)=>SetUserObject({PublicDept:event.currentTarget.value})} placeholder='Hvor stor er din gæld til det offentlige?' type='number'></Input> 
->>>>>>> origin/master
+                <Input id='debtInput' oninput={(event)=>SetUserObject({PublicDept:event.currentTarget.value})} placeholder='Hvor stor er din gæld til det offentlige?' type='number'></Input> 
             </div> }
   <br/>
   <HStack spacing={"28rem"} justifyContent={"end"}>
