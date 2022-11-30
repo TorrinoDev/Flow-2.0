@@ -5,9 +5,6 @@ import createCookieStore from "@solid-primitives/cookies-store";
 
 export function Citizenships() {
     const [storeUser, setStoreUser, ,clear] = createCookieStore()
-    function setUserSessionCookie(){
-
-    }
     return (
 
 <>

@@ -16,11 +16,11 @@ function Relations(props) {
         <AboutYourRelationship />
             <Center>
               <HStack spacing={"0.5rem"}>
-            <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); }}>Enlig</Button>
-            <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); }}>Gift</Button>
-            <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(1); }}>Samlever</Button>
-            <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Skilt/separeret</Button>
-            <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Enke M/K</Button>
+            <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enlig" }) }}>Enlig</Button>
+            <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Relation:"Gift" }) }}>Gift</Button>
+            <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Relation:"Samlever" }) }}>Samlever</Button>
+            <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Relation:"Skilt/separeret" }) }}>Skilt/separeret</Button>
+            <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enke M/K" }) }}>Enke M/K</Button>
             
 
             </HStack>

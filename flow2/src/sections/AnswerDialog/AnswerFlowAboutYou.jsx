@@ -15,7 +15,6 @@ import Vehicle from './AboutYou/Vehicle';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
-  const [isTrue, setIsTrue] = createSignal(false);
   const [x, setX] = createSignal(1);
   const [errorObject,setErrorObject] = createStore({name:"Indsæt dit navn",email:"Indsæt din email",phone:"Indsæt kun tal til dit telefonnummer"})
   const [errorSum,setErrorSum] = createSignal("");
@@ -28,7 +27,7 @@ function AnswerFlowAboutYou(props) {
       switch (inputSubject) {
         case 0: 
         if (text.length>1) {
-          setStoreUser("AboutYouName",text)
+          SetUserObject({ AboutYouName: a })
           setErrorObject({name:""})
         } else {
           setErrorObject({name:"Skriv dit navn"})
@@ -36,7 +35,7 @@ function AnswerFlowAboutYou(props) {
           break;
         case 1:
           if (a.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
-            setStoreUser("AboutYouMail",text)
+            SetUserObject({ AboutYouMail: a })
             setErrorObject({email:""})
           } else {
             setErrorObject({email:" Email format, ex: andr12f4@zealand.dk"})
@@ -45,7 +44,7 @@ function AnswerFlowAboutYou(props) {
         case 2:
           if (text.length==8) {
             setErrorObject({phone:""})
-            setStoreUser("AboutYouPhone",text)
+            SetUserObject({ AboutYouPhone: a })
           } else {
             setErrorObject({phone:"Telefonnummer format (går under kun dansk +45 nummer), ex: 12345678"})
           }
@@ -269,7 +268,7 @@ function AnswerFlowAboutYou(props) {
           <Show when={x() !==4 } >
             <Show when={x() !==12}>
         <Button colorScheme="success" onclick={() => { 
-          if (checkValidation())
+          if (!checkValidation())
           {
             setX(x() + 1)
           }}}  
