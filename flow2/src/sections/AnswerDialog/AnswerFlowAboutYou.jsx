@@ -55,6 +55,7 @@ function AnswerFlowAboutYou(props) {
 
   function checkValidation()
   {
+    console.log(userObject)
     switch(x()) {
       case 1:
         if (errorObject.email.length<1&&errorObject.name.length<1&&errorObject.phone.length<1) {

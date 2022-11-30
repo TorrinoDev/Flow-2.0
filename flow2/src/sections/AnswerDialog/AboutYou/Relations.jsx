@@ -16,9 +16,9 @@ function Relations(props) {
   function validation(inputText){
     if (inputText.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
       SetUserObject({ CohabitingEmail: inputText })
-      setErrorCode({email:""})
+      setErrorCode("")
     } else {
-      setErrorCode({email:" Email format, ex: example@example.dk"})
+      setErrorCode(" Email format, ex: example@example.dk")
     }
   }
 
@@ -48,27 +48,25 @@ function Relations(props) {
                 <HStack spacing="$40">
                   
                   <Button leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setZ(1); }}>Ja tak, tilføj medansøger</Button>
-                  <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); }}>
+                  <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enlig" }) }}>
                     Nej tak, jeg ansøger alene
                   </Button>
+                  </HStack>
+                  </Center>
+                  <br />
                   <Switch>
                     <Match when={z() ===1}>
                       <Show when={z() === 1}>
-                      <Match when={z() === 1}>
-          <Show when={z() === 1}>
-            <br />
-          <div>Ægtefælles/samlevers Email</div>
-          <Text color={"red"}>{errorCode().email}</Text>
-            <Input oninput={(event) => validation(event.currentTarget.value)} placeholder='Email tilhørende ægtefælle/samlever'></Input>
-            
 
-          </Show>
-          </Match>
+            
+          <div>Ægtefælles/samlevers Email</div>
+          <Text color={"red"}>{errorCode()}</Text>
+            <Input oninput={(event) => validation(event.currentTarget.value)} placeholder='Email tilhørende ægtefælle/samlever'></Input>
                       </Show>
                     </Match>
                   </Switch>
-                  </HStack>
-                  </Center>
+                
+                  
           </Show>
           </Match>
           
