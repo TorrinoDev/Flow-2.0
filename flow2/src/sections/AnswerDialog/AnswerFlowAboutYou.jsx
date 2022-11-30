@@ -5,7 +5,6 @@ import { FaSolidUserInjured } from 'solid-icons/fa'
 import { ImUsers } from 'solid-icons/im'
 import { EmploymentMonth, EmploymentYear } from './AboutYou/Employment';
 import { Citizenships } from './AboutYou/Citizenship';
-import { Relationship } from './AboutYou/Relations';
 import { AiOutlineUserAdd } from 'solid-icons/ai'
 import { CoopMembershipComponent } from './AboutYou/CoopMembership';
 import { createStore } from "solid-js/store";
@@ -123,46 +122,29 @@ function AnswerFlowAboutYou(props) {
         <Match when={x() === 3}>
           <Show when={x() === 3}>
             <Text>
-              <AboutYourRelationship></AboutYourRelationship>
-              <Relationship></Relationship>
+              <Relations SetUserObject={SetUserObject} x={x} setX={setX}/>
 
             </Text>
           </Show>
         </Match>
 
+      
         <Match when={x() === 4}>
           <Show when={x() === 4}>
             <Text>
-              <AboutYourCoapplicant></AboutYourCoapplicant>
-              <br />
-              <Center>
-                
-                <HStack spacing="$40">
-
-                  <Button leftIcon={<AiOutlineUserAdd boxSize={18} />}>Ja tak, tilføj medansøger</Button>
-                  <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); }}>
-                    Nej tak, jeg ansøger alene
-                  </Button>
-
-                </HStack>
-                
-              </Center>
+            <Center>
+              <HStack spacing={"0.5rem"}>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Funtionær</Button>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Selvstændig</Button>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Tjenestemand</Button>
+            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 7); }}>Ledig</Button>
+            </HStack>
+            </Center>
             </Text>
           </Show>
         </Match>
         <Match when={x() === 5}>
           <Show when={x() === 5}>
-            <Text>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Funtionær</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Selvstændig</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Tjenestemand</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 7); }}>Ledig</Button>
-
-            </Text>
-          </Show>
-        </Match>
-        <Match when={x() === 6}>
-          <Show when={x() === 6}>
             <Text>
             <Employer></Employer>
             <Input oninput={(event) => SetUserObject({ Employer: event.currentTarget.value })} placeholder='Hvor er du ansat?'></Input>
@@ -176,30 +158,34 @@ function AnswerFlowAboutYou(props) {
             </Text>
           </Show>
         </Match>
+        <Match when={x() === 6}>
+        <Show when={x() === 6}>
+          <Text>
+            
+            <Family SetUserObject={SetUserObject} x={x} setX={setX}/>
+
+
+            
+          </Text>
+        </Show>
+        </Match>
         <Match when={x() === 7}>
         <Show when={x() === 7}>
           <Text>
-            <Children />
+            <Vehicle SetUserObject={SetUserObject} x={x} setX={setX}/>
           </Text>
         </Show>
         </Match>
         <Match when={x() === 8}>
         <Show when={x() === 8}>
           <Text>
-            <Cars />
-          </Text>
-        </Show>
-        </Match>
-        <Match when={x() === 9}>
-        <Show when={x() === 9}>
-          <Text>
             <CoopMembership/>
             <CoopMembershipComponent></CoopMembershipComponent>
           </Text>
         </Show>
         </Match>
-        <Match when={x() === 10}>
-        <Show when={x() === 10}>
+        <Match when={x() === 9}>
+        <Show when={x() === 9}>
           <Text>
             <CoopMember></CoopMember>
             <CoopMembershipComponent></CoopMembershipComponent>
@@ -207,11 +193,32 @@ function AnswerFlowAboutYou(props) {
           </Text>
         </Show>
         </Match>
+        <Match when={x() === 10}>
+        <Show when={x() === 10}>
+          <Text>
+            <AboutYouDone/>
+            <br />
+            <Center>
+            <Button colorScheme="success" onclick={() => { setX(x() + 2); }}>OK</Button>
+          </Center>
+          </Text>
+        </Show>
+        </Match>
         <Match when={x() === 11}>
         <Show when={x() === 11}>
           <Text>
-            <AboutYouDone/>
-            
+            <NoEmployment />
+            <br />
+            <EmploymentMonth />
+            <br />
+            <br />
+            <EmploymentYear />
+            <br />
+            <br />
+            <Center>
+            <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
+          </Center>
+        <br />
           </Text>
         </Show>
         </Match>

@@ -90,7 +90,7 @@ export function Children() {
 }
 export function Cars(){
     return <div>
-         <h2 style="text-align:center;font-size:25px"> <span style="color:#BA0409">Hvor mange </span>biler<span style="color:#BA0409"> er der </span>i din hunstand <span style="color:#BA0409">?</span></h2>
+         <h2 style="text-align:center;font-size:25px"> <span style="color:#BA0409">Hvor mange </span>biler<span style="color:#BA0409"> er der </span>i din husstand <span style="color:#BA0409">?</span></h2>
          <br />
         </div>
 }
