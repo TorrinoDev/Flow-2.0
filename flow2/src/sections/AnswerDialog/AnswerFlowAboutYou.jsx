@@ -9,6 +9,9 @@ import { AiOutlineUserAdd } from 'solid-icons/ai'
 import { CoopMembershipComponent } from './AboutYou/CoopMembership';
 import { createStore } from "solid-js/store";
 import createCookieStore from "@solid-primitives/cookies-store";
+import Relations from './AboutYou/Relations';
+import Family from './AboutYou/Family';
+import Vehicle from './AboutYou/Vehicle';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
