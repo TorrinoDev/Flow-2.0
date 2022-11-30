@@ -38,7 +38,7 @@ function AnswerFlowAboutYou(props) {
             SetUserObject({ AboutYouMail: a })
             setErrorObject({email:""})
           } else {
-            setErrorObject({email:" Email format, ex: andr12f4@zealand.dk"})
+            setErrorObject({email:" Email format, ex: example@example.dk"})
           }
           break;
         case 2:
@@ -64,15 +64,21 @@ function AnswerFlowAboutYou(props) {
           setErrorSum("Fejl i indtastede oplysninger: Alle Helt røde felter skal ikke kunne ses")
           return false;
         }
-        break;
       case 2:
-        console.log(storeUser.Citizenship)
         if (storeUser.Citizenship.length>1) {
           return true;
         } else {
           setErrorSum("Fejl i indtastede oplysninger: Der skal vælges dit borgerskab ")
           return false;
         }
+        case 3: 
+        if (userObject.CohabitingEmail.length>1) {
+          return true
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Der skal korrekt indtastes en email ")
+          return false;
+        }
+        
     }
   }
 
@@ -268,7 +274,7 @@ function AnswerFlowAboutYou(props) {
           <Show when={x() !==4 } >
             <Show when={x() !==12}>
         <Button colorScheme="success" onclick={() => { 
-          if (!checkValidation())
+          if (checkValidation())
           {
             setX(x() + 1)
           }}}  

@@ -11,6 +11,17 @@ function Relations(props) {
   const {SetUserObject, x, setX} = props
   const [y, setY] = createSignal(0);
   const [z, setZ] = createSignal(0);
+  const [errorCode,setErrorCode] = createSignal()
+
+  function validation(inputText){
+    if (inputText.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
+      SetUserObject({ CohabitingEmail: inputText })
+      setErrorCode({email:""})
+    } else {
+      setErrorCode({email:" Email format, ex: example@example.dk"})
+    }
+  }
+
   return (
     <div>
         <AboutYourRelationship />
@@ -47,7 +58,8 @@ function Relations(props) {
           <Show when={z() === 1}>
             <br />
           <div>Ægtefælles/samlevers Email</div>
-            <Input oninput={(event) => SetUserObject({ Children: event.currentTarget.value })} placeholder='Email tilhørende ægtefælle/samlever'></Input>
+          <Text color={"red"}>{errorCode().email}</Text>
+            <Input oninput={(event) => validation(event.currentTarget.value)} placeholder='Email tilhørende ægtefælle/samlever'></Input>
             
 
           </Show>
