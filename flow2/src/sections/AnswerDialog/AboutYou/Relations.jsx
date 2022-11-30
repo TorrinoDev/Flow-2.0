@@ -40,23 +40,21 @@ function Relations(props) {
                   <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); }}>
                     Nej tak, jeg ansøger alene
                   </Button>
+                  </HStack>
+                  </Center>
+                  <br />
                   <Switch>
                     <Match when={z() ===1}>
                       <Show when={z() === 1}>
-                      <Match when={z() === 1}>
-          <Show when={z() === 1}>
-            <br />
+
+            
           <div>Ægtefælles/samlevers Email</div>
             <Input oninput={(event) => SetUserObject({ Children: event.currentTarget.value })} placeholder='Email tilhørende ægtefælle/samlever'></Input>
-            
-
-          </Show>
-          </Match>
                       </Show>
                     </Match>
                   </Switch>
-                  </HStack>
-                  </Center>
+                
+                  
           </Show>
           </Match>
           
