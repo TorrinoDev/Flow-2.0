@@ -9,7 +9,7 @@ import { Relationship } from './AboutYou/Relations';
 import { AiOutlineUserAdd } from 'solid-icons/ai'
 import { CoopMembershipComponent } from './AboutYou/CoopMembership';
 import { createStore } from "solid-js/store";
-
+import createCookieStore from "@solid-primitives/cookies-store";
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
@@ -17,7 +17,8 @@ function AnswerFlowAboutYou(props) {
   const [x, setX] = createSignal(1);
   const [errorObject,setErrorObject] = createStore({name:"Indsæt dit navn",email:"Indsæt din email",phone:"Indsæt kun tal til dit telefonnummer"})
   const [errorSum,setErrorSum] = createSignal("");
-
+ 
+  const [storeUser, setStoreUser, ,clear] = createCookieStore()
 
   function validation (text,inputSubject){
     let a = text
@@ -25,7 +26,7 @@ function AnswerFlowAboutYou(props) {
       switch (inputSubject) {
         case 0: 
         if (text.length>1) {
-          SetUserObject({ AboutYouName: text })
+          setStoreUser("AboutYouName",text)
           setErrorObject({name:""})
         } else {
           setErrorObject({name:"Skriv dit navn"})
@@ -33,7 +34,7 @@ function AnswerFlowAboutYou(props) {
           break;
         case 1:
           if (a.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
-            SetUserObject({ AboutYouMail: text })
+            setStoreUser("AboutYouMail",text)
             setErrorObject({email:""})
           } else {
             setErrorObject({email:" Email format, ex: andr12f4@zealand.dk"})
@@ -42,8 +43,7 @@ function AnswerFlowAboutYou(props) {
         case 2:
           if (text.length==8) {
             setErrorObject({phone:""})
-            console.log("hej")
-            SetUserObject({ AboutYouPhone: text })
+            setStoreUser("AboutYouPhone",text)
           } else {
             setErrorObject({phone:"Telefonnummer format (går under kun dansk +45 nummer), ex: 12345678"})
           }
@@ -65,10 +65,12 @@ function AnswerFlowAboutYou(props) {
         }
         break;
       case 2:
-        if (userObject.Citizenship<1) {
+        console.log(storeUser.Citizenship)
+        if (storeUser.Citizenship.length>1) {
           return true;
         } else {
           setErrorSum("Fejl i indtastede oplysninger: Der skal vælges dit borgerskab ")
+          return false;
         }
     }
   }
