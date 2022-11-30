@@ -4,7 +4,7 @@ import { createSignal } from 'solid-js';
 
 function AnswerFlowMitId(props) {
   const {setOpen, SetUserObject, userObject} = props
-  const [error,setError] = createSignal("Input forkert, input i tekst feltet");
+  const [error,setError] = createSignal("Skriv i tekst feltet");
   function validation (event){
     let a = event
     if (a.length>0) {

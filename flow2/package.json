@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@hope-ui/solid": "^0.6.7",
+    "@solid-primitives/cookies-store": "^1.1.11",
     "@stitches/core": "^1.2.8",
     "solid-icons": "^1.0.4",
     "solid-js": "^1.5.1",

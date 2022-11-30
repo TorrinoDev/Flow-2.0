@@ -7,39 +7,99 @@ import { EmploymentMonth, EmploymentYear } from './AboutYou/Employment';
 import { Citizenships } from './AboutYou/Citizenship';
 import { AiOutlineUserAdd } from 'solid-icons/ai'
 import { CoopMembershipComponent } from './AboutYou/CoopMembership';
-import { FaSolidChildDress , FaSolidChildren } from 'solid-icons/fa'
-import { ImCross } from 'solid-icons/im'
-import { FaSolidUsersRectangle } from 'solid-icons/fa'
-import Family from './AboutYou/Family';
-import Vehicle from './AboutYou/Vehicle';
-import Relations from './AboutYou/Relations';
-
+import { createStore } from "solid-js/store";
+import createCookieStore from "@solid-primitives/cookies-store";
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
   const [isTrue, setIsTrue] = createSignal(false);
   const [x, setX] = createSignal(1);
-  const [y, setY] = createSignal(0);
+  const [errorObject,setErrorObject] = createStore({name:"Indsæt dit navn",email:"Indsæt din email",phone:"Indsæt kun tal til dit telefonnummer"})
+  const [errorSum,setErrorSum] = createSignal("");
+ 
+  const [storeUser, setStoreUser, ,clear] = createCookieStore()
+
+  function validation (text,inputSubject){
+    let a = text
+    if (text.length>0) {
+      switch (inputSubject) {
+        case 0: 
+        if (text.length>1) {
+          setStoreUser("AboutYouName",text)
+          setErrorObject({name:""})
+        } else {
+          setErrorObject({name:"Skriv dit navn"})
+        }
+          break;
+        case 1:
+          if (a.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
+            setStoreUser("AboutYouMail",text)
+            setErrorObject({email:""})
+          } else {
+            setErrorObject({email:" Email format, ex: andr12f4@zealand.dk"})
+          }
+          break;
+        case 2:
+          if (text.length==8) {
+            setErrorObject({phone:""})
+            setStoreUser("AboutYouPhone",text)
+          } else {
+            setErrorObject({phone:"Telefonnummer format (går under kun dansk +45 nummer), ex: 12345678"})
+          }
+          break;
+      }
+    }
+  }
+
+  function checkValidation()
+  {
+    switch(x()) {
+      case 1:
+        if (errorObject.email.length<1&&errorObject.name.length<1&&errorObject.phone.length<1) {
+          setErrorSum("")
+          return true;
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Alle Helt røde felter skal ikke kunne ses")
+          return false;
+        }
+        break;
+      case 2:
+        console.log(storeUser.Citizenship)
+        if (storeUser.Citizenship.length>1) {
+          return true;
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Der skal vælges dit borgerskab ")
+          return false;
+        }
+    }
+  }
+
+ 
+
 
   return (
     <div>
+     
       <Switch>
         <Match when={x() === 1}>
           <Show when={x() === 1}>
             <Text>
               <AboutYouIntro></AboutYouIntro>
               <AboutYouName></AboutYouName>
-              <Input oninput={(event) => SetUserObject({ AboutYouName: event.currentTarget.value })} placeholder='Navn'></Input>
+              <Text color={"red"}>{errorObject.name}</Text>
+              <Input oninput={(event) => validation(event.currentTarget.value, 0)} placeholder='Navn'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouMail></AboutYouMail>
-              <Input oninput={(event) => SetUserObject({ AboutYouMail: event.currentTarget.value })} placeholder='E-mail'></Input>
+              <Text color={"red"}>{errorObject.email}</Text>
+              <Input oninput={(event) => validation(event.currentTarget.value, 1)} placeholder='E-mail'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouPhone></AboutYouPhone>
-              <Input oninput={(event) => SetUserObject({ AboutYouPhone: event.currentTarget.value })} placeholder='Mobilnummer'></Input>
+              <Text color={"red"}>{errorObject.phone}</Text>
+              <Input oninput={(event) => validation(event.currentTarget.value, 2)} type="number" placeholder='Mobilnummer'></Input>
             </Text>
             <br />
             <Text><NoPhone></NoPhone></Text>
@@ -53,7 +113,7 @@ function AnswerFlowAboutYou(props) {
             <div>
               <Text>
                 <AboutYourCitizenship></AboutYourCitizenship>
-                <Citizenships></Citizenships>
+                <Citizenships setUser={SetUserObject}></Citizenships>
               </Text>
             </div>
           </Show>
@@ -181,7 +241,9 @@ function AnswerFlowAboutYou(props) {
         </Show>
         </Match>
       </Switch>
-
+      <Center>
+        <Text color={"red"} size={"2xl"} fontWeight={"$bold"}>{errorSum()}</Text>
+      </Center>
     
 <br />
       <HStack spacing={"28rem"}>
@@ -201,10 +263,16 @@ function AnswerFlowAboutYou(props) {
             }
           }
         }}>Tilbage</Button>
-          
-            <Show when={x() !==11}>
-        <Button colorScheme="success" onclick={() => { setX(x() + 1); }}>Næste</Button>
-        
+          <Show when={x() !==4 } >
+            <Show when={x() !==12}>
+        <Button colorScheme="success" onclick={() => { 
+          if (checkValidation())
+          {
+            setX(x() + 1)
+          }}}  
+        >
+          Næste</Button>
+        </Show>
         </Show>
       </HStack>
 
