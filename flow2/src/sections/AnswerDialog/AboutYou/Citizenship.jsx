@@ -5,6 +5,9 @@ import { SimpleGrid } from "@hope-ui/solid"
 
 export function Citizenships() {
 
+    function setUserSessionCookie(){
+        
+    }
     return (
 
 <>
@@ -19,6 +22,7 @@ export function Citizenships() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=> {setUser({Citizenship:"Dansk"});console.log(setUser)}}
         >
             Dansk
         </Button>
@@ -31,6 +35,7 @@ export function Citizenships() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=> setUser({Citizenship:"Udlænding med arbejdstilladelse"})}
         >
             Udlænding med <br/>
             arbejdstilladelse
@@ -44,6 +49,7 @@ export function Citizenships() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=> setUser({Citizenship:"Udlænding uden arbejdstilladelse"})}
         >
             Udlænding uden <br/>
             arbejdstilladelse
