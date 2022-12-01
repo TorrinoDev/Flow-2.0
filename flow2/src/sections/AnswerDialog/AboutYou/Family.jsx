@@ -12,6 +12,7 @@ function Family(props) {
     const [error, setError] = createStore({ errorOne: "Indtast barnets alder som heltal", 
     errorTwo: "Indtast barnets alder som heltal", errorThree: "Indtast barnets alder som heltal" })
     const [children,setChildren] = createStore({childOne:"",childTwo:""})
+    const [todos, setTodos] = createSignal([]);
     
     function validation(inputText, id) {
         switch (id) {
@@ -84,7 +85,9 @@ function Family(props) {
                 <Match when={y() === 3}>
                     <Show when={y() === 3}>
 
-                        <div>Hej3</div>
+                    <div>
+      
+                    </div>
 
                     </Show>
                 </Match>
@@ -94,3 +97,4 @@ function Family(props) {
 }
 
 export default Family;
+

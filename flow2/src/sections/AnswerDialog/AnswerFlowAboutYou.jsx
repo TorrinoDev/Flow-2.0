@@ -9,6 +9,7 @@ import Family from './AboutYou/Family';
 import Vehicle from './AboutYou/Vehicle';
 import Employment from './AboutYou/Employment';
 import CoopMembership from './AboutYou/CoopMembership';
+import Housing from './AboutYou/Housing';
 
 
 function AnswerFlowAboutYou(props) {
@@ -196,19 +197,34 @@ function AnswerFlowAboutYou(props) {
         <Match when={x() === 7}>
           <Show when={x() === 7}>
             <Text>
+              <Housing SetUserObject={SetUserObject} x={x} setX={setX} />
+            </Text>
+          </Show>
+          </Match>
+        <Match when={x() === 8}>
+          <Show when={x() === 8}>
+            <Text>
               <CoopMembership SetUserObject={SetUserObject} x={x} setX={setX} />
             </Text>
           </Show>
         </Match>
        
-        <Match when={x() === 8}>
-          <Show when={x() === 8}>
+        <Match when={x() === 9}>
+          <Show when={x() === 9}>
             <Text>
               <AboutYouDone />
               <br />
               <Center>
                 <Button colorScheme="success" onclick={() => { setX(x() + 2); }}>OK</Button>
               </Center>
+            </Text>
+          </Show>
+        </Match>
+
+        <Match when={x() === 10}>
+          <Show when={x() === 10}>
+            <Text>
+              <Total SetUserObject={SetUserObject} x={x} setX={setX} />
             </Text>
           </Show>
         </Match>
@@ -245,7 +261,7 @@ function AnswerFlowAboutYou(props) {
       </HStack>
 
       <br />
-      <Progress trackColor="$info3" value={x() * 8}>
+      <Progress trackColor="$info3" value={x() * 10}>
         <ProgressIndicator color="$info9" />
         <br />
       </Progress>
