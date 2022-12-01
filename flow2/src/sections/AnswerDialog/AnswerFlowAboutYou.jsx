@@ -212,7 +212,7 @@ function AnswerFlowAboutYou(props) {
         }}>Tilbage</Button>
         <Show when={x() !== 4} >
           <Show when={x() !== 12}>
-            <Button colorScheme="success" onclick={() => { 
+            <Button id="nextButton" colorScheme="success" onclick={() => { 
               if (checkValidation()) {
                 setX(x() + 1)
                 

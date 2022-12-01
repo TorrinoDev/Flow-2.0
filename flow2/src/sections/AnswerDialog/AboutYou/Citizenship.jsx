@@ -14,6 +14,7 @@ export function Citizenships() {
             <Center>
                 <HStack spacing={"0.5rem"}>
                     <Button
+                        id="citiDansk"
                         leftIcon={<FaSolidMapPin />}
                         boxSize={128}
                         variant="default"
@@ -27,7 +28,7 @@ export function Citizenships() {
                         Dansk
                     </Button>
                     <Button
-
+                        id="citiUdMa"
                         boxSize={128}
                         variant="default"
                         size="md"
@@ -41,7 +42,7 @@ export function Citizenships() {
                         arbejdstilladelse
                     </Button>
                     <Button
-
+                        id="citiUdUa"
                         boxSize={128}
                         variant="default"
                         size="md"
