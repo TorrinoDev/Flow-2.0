@@ -106,7 +106,7 @@ export function Residence() {
     <br />
     </div>
 }
-export function CoopMembership() {
+export function CoopMembershipText() {
     return <div>
         <h2 style="text-align:center;font-size:25px"> <span style="color:#BA0409">Er din husstand </span>medlem af Coop<span style="color:#BA0409">?</span></h2>
     </div>

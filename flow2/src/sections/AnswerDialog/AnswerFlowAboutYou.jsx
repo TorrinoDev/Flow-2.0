@@ -1,14 +1,15 @@
 import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center, Divider } from '@hope-ui/solid';
 import { createSignal, Match, Show, Switch } from 'solid-js';
-import { MitId, RKInDebtQuestion, AboutYouIntro, AboutYouName, AboutYouMail, AboutYouPhone, NoPhone, AboutYourCitizenship, AboutYourRelationship, AboutYourCoapplicant, Employer, Employer2, Children, Cars, CoopMembership, CoopMember, AboutYouDone, NoEmployment } from './FirstAnswerRKI'
+import { MitId, RKInDebtQuestion, AboutYouIntro, AboutYouName, AboutYouMail, AboutYouPhone, NoPhone, AboutYourCitizenship, AboutYourRelationship, AboutYourCoapplicant, Employer, Employer2, Children, Cars, CoopMembershipText, CoopMember, AboutYouDone, NoEmployment } from './FirstAnswerRKI'
 import { Citizenships } from './AboutYou/Citizenship';
-import { CoopMembershipComponent } from './AboutYou/CoopMembership';
 import { createStore } from "solid-js/store";
 import createCookieStore from "@solid-primitives/cookies-store";
 import Relations from './AboutYou/Relations';
 import Family from './AboutYou/Family';
 import Vehicle from './AboutYou/Vehicle';
 import Employment from './AboutYou/Employment';
+import CoopMembership from './AboutYou/CoopMembership';
+
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
@@ -195,22 +196,13 @@ function AnswerFlowAboutYou(props) {
         <Match when={x() === 7}>
           <Show when={x() === 7}>
             <Text>
-              <CoopMembership />
-              <CoopMembershipComponent></CoopMembershipComponent>
+              <CoopMembership SetUserObject={SetUserObject} x={x} setX={setX} />
             </Text>
           </Show>
         </Match>
+       
         <Match when={x() === 8}>
           <Show when={x() === 8}>
-            <Text>
-              <CoopMember></CoopMember>
-              <CoopMembershipComponent></CoopMembershipComponent>
-              <Input oninput={(event) => SetUserObject({ CoopMember: event.currentTarget.value })} placeholder='Medlemsnummer'></Input>
-            </Text>
-          </Show>
-        </Match>
-        <Match when={x() === 9}>
-          <Show when={x() === 9}>
             <Text>
               <AboutYouDone />
               <br />
@@ -231,12 +223,6 @@ function AnswerFlowAboutYou(props) {
       <HStack spacing={"28rem"}>
 
         <Button colorScheme="danger" justifyContent={"end"} onclick={() => {
-          if (x() === 12) {
-            setX(x() - 6);
-          }
-          if (x() === 7) {
-            setX(x() - 1);
-          }
           if (x() === 1) {
             setOpen(2);
           } else {
