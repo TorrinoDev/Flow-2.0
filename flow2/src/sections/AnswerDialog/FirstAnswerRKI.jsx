@@ -81,11 +81,17 @@ export function Employer2() {
         <h2 style="text-align:center">Hvornår blev du ansat i virksomheden?</h2>
     </div>
 }
+export function Employer3() {
+    return <div>
+        <h2 style="text-align:center">Hvilket år blev du ansat i virksomheden?</h2>
+    </div>
+}
 export function Children() {
     return <div>
          <h2 style="text-align:center;font-size:25px"> <span style="color:#BA0409">Har du </span>hjemmeboende børn under 18 år<span style="color:#BA0409">?</span></h2>
          <br />
          <h2 style="text-align:center">Herunder også delebørn med folkeregisteradresse på din adresse</h2>
+         <br />
     </div>
 }
 export function Cars(){
@@ -125,6 +131,15 @@ export function AboutYouDone() {
 }
 export function NoEmployment() {
     return <div>
-        <h2 style="text-align:center;font-size:25;color:#BA0409">Hvornår startede din ledighedsperiode?</h2>
+        <br/>
+        <h2 style="text-align:center;color:#BA0409;font-size:25px">Hvornår startede din ledighedsperiode?</h2>
+        <br/>
     </div>
+}
+export function JobSituation() {
+    return <div>
+        <h2 style="text-align:center;color:#BA0409;font-size:25px">Hvad er din <span style="text-align:center;font-size:25px">jobsituation</span><span style="text-align:center;color:#BA0409;font-size:25px"></span>?</h2>
+   <br />
+    </div>
+
 }

@@ -1,9 +1,9 @@
-import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center , Divider} from '@hope-ui/solid';
+import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center, Divider } from '@hope-ui/solid';
 import { createSignal, Match, Show, Switch } from 'solid-js';
 import { MitId, RKInDebtQuestion, AboutYouIntro, AboutYouName, AboutYouMail, AboutYouPhone, NoPhone, AboutYourCitizenship, AboutYourRelationship, AboutYourCoapplicant, Employer, Employer2, Children, Cars, CoopMembership, CoopMember, AboutYouDone, NoEmployment } from './FirstAnswerRKI'
 import { FaSolidUserInjured } from 'solid-icons/fa'
 import { ImUsers } from 'solid-icons/im'
-import { EmploymentMonth, EmploymentYear } from './AboutYou/Employment';
+import { EmploymentMonth, EmploymentYear } from './AboutYou/EmploymentOLD';
 import { Citizenships } from './AboutYou/Citizenship';
 import { AiOutlineUserAdd } from 'solid-icons/ai'
 import { CoopMembershipComponent } from './AboutYou/CoopMembership';
@@ -12,22 +12,23 @@ import createCookieStore from "@solid-primitives/cookies-store";
 import Relations from './AboutYou/Relations';
 import Family from './AboutYou/Family';
 import Vehicle from './AboutYou/Vehicle';
+import Employment from './AboutYou/Employment';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
   const [x, setX] = createSignal(1);
-  const [errorObject,setErrorObject] = createStore({name:"Indsæt dit navn",email:"Indsæt din email",phone:"Indsæt kun tal til dit telefonnummer"})
-  const [errorSum,setErrorSum] = createSignal("");
- 
-  const [storeUser, setStoreUser, ,clear] = createCookieStore()
+  const [errorObject, setErrorObject] = createStore({ name: "Indsæt dit navn", email: "Indsæt din email", phone: "Indsæt kun tal til dit telefonnummer" })
+  const [errorSum, setErrorSum] = createSignal("");
 
-  function validation (text,inputSubject){
+  const [storeUser, setStoreUser, , clear] = createCookieStore()
+
+  function validation(text, inputSubject) {
     let a = text
-    if (text.length>0) {
+    if (text.length > 0) {
       switch (inputSubject) {
         case 0: 
         if (text.length>1) {
-          SetUserObject({ AboutYouName: a })
+          setStoreUser("AboutYouName",text)
           setErrorObject({name:""})
         } else {
           setErrorObject({name:"Skriv dit navn"})
@@ -35,18 +36,18 @@ function AnswerFlowAboutYou(props) {
           break;
         case 1:
           if (a.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
-            SetUserObject({ AboutYouMail: a })
+            setStoreUser("AboutYouMail",text)
             setErrorObject({email:""})
           } else {
-            setErrorObject({email:" Email format, ex: example@example.dk"})
+            setErrorObject({email:" Email format, ex: andr12f4@zealand.dk"})
           }
           break;
         case 2:
           if (text.length==8) {
             setErrorObject({phone:""})
-            SetUserObject({ AboutYouPhone: a })
+            setStoreUser("AboutYouPhone",text)
           } else {
-            setErrorObject({phone:"Telefonnummer format (går under kun dansk +45 nummer), ex: 12345678"})
+            setErrorObject({ phone: "Telefonnummer format (går under kun dansk +45 nummer), ex: 12345678" })
           }
           break;
       }
@@ -55,10 +56,9 @@ function AnswerFlowAboutYou(props) {
 
   function checkValidation()
   {
-    console.log(userObject)
     switch(x()) {
       case 1:
-        if (errorObject.email.length<1&&errorObject.name.length<1&&errorObject.phone.length<1) {
+        if (errorObject.email.length < 1 && errorObject.name.length < 1 && errorObject.phone.length < 1) {
           setErrorSum("")
           return true;
         } else {
@@ -66,6 +66,7 @@ function AnswerFlowAboutYou(props) {
           return false;
         }
       case 2:
+        console.log(storeUser.Citizenship)
         if (storeUser.Citizenship.length>1) {
           return true;
         } else {
@@ -83,12 +84,12 @@ function AnswerFlowAboutYou(props) {
     }
   }
 
- 
+
 
 
   return (
     <div>
-     
+
       <Switch>
         <Match when={x() === 1}>
           <Show when={x() === 1}>
@@ -131,130 +132,112 @@ function AnswerFlowAboutYou(props) {
         <Match when={x() === 3}>
           <Show when={x() === 3}>
             <Text>
-              <Relations SetUserObject={SetUserObject} x={x} setX={setX}/>
+              <Relations SetUserObject={SetUserObject} x={x} setX={setX} />
 
             </Text>
           </Show>
         </Match>
 
-      
+
         <Match when={x() === 4}>
           <Show when={x() === 4}>
             <Text>
-            <Center>
-              <HStack spacing={"0.5rem"}>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Funtionær</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Selvstændig</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 1); }}>Tjenestemand</Button>
-            <Button leftIcon={<FaSolidUserInjured boxSize={18} />} onclick={() => { setX(x() + 7); }}>Ledig</Button>
-            </HStack>
-            </Center>
+              <Employment SetUserObject={SetUserObject} x={x} setX={setX} />
+
             </Text>
           </Show>
         </Match>
+
+
+       
         <Match when={x() === 5}>
           <Show when={x() === 5}>
             <Text>
-            <Employer></Employer>
-            <Input oninput={(event) => SetUserObject({ Employer: event.currentTarget.value })} placeholder='Hvor er du ansat?'></Input>
-            <Employer2></Employer2>
-           <EmploymentMonth></EmploymentMonth>
-           <br />
-           <Divider />
-           <br />
-           <EmploymentYear></EmploymentYear>
-           
+
+              <Family SetUserObject={SetUserObject} x={x} setX={setX} />
+
+
+
             </Text>
           </Show>
         </Match>
         <Match when={x() === 6}>
-        <Show when={x() === 6}>
-          <Text>
-            
-            <Family SetUserObject={SetUserObject} x={x} setX={setX}/>
-
-
-            
-          </Text>
-        </Show>
+          <Show when={x() === 6}>
+            <Text>
+              <Vehicle SetUserObject={SetUserObject} x={x} setX={setX} />
+            </Text>
+          </Show>
         </Match>
         <Match when={x() === 7}>
-        <Show when={x() === 7}>
-          <Text>
-            <Vehicle SetUserObject={SetUserObject} x={x} setX={setX}/>
-          </Text>
-        </Show>
+          <Show when={x() === 7}>
+            <Text>
+              <CoopMembership />
+              <CoopMembershipComponent></CoopMembershipComponent>
+            </Text>
+          </Show>
         </Match>
         <Match when={x() === 8}>
-        <Show when={x() === 8}>
-          <Text>
-            <CoopMembership/>
-            <CoopMembershipComponent></CoopMembershipComponent>
-          </Text>
-        </Show>
+          <Show when={x() === 8}>
+            <Text>
+              <CoopMember></CoopMember>
+              <CoopMembershipComponent></CoopMembershipComponent>
+              <Input oninput={(event) => SetUserObject({ CoopMember: event.currentTarget.value })} placeholder='Medlemsnummer'></Input>
+            </Text>
+          </Show>
         </Match>
         <Match when={x() === 9}>
-        <Show when={x() === 9}>
-          <Text>
-            <CoopMember></CoopMember>
-            <CoopMembershipComponent></CoopMembershipComponent>
-            <Input oninput={(event) => SetUserObject({ CoopMember: event.currentTarget.value })} placeholder='Medlemsnummer'></Input>
-          </Text>
-        </Show>
+          <Show when={x() === 9}>
+            <Text>
+              <AboutYouDone />
+              <br />
+              <Center>
+                <Button colorScheme="success" onclick={() => { setX(x() + 2); }}>OK</Button>
+              </Center>
+            </Text>
+          </Show>
         </Match>
         <Match when={x() === 10}>
-        <Show when={x() === 10}>
-          <Text>
-            <AboutYouDone/>
-            <br />
-            <Center>
-            <Button colorScheme="success" onclick={() => { setX(x() + 2); }}>OK</Button>
-          </Center>
-          </Text>
-        </Show>
+          <Show when={x() === 10}>
+            <Text>
+              <NoEmployment />
+              <br />
+              <EmploymentMonth />
+              <br />
+              <br />
+              <EmploymentYear />
+              <br />
+              <br />
+              <Center>
+                <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
+              </Center>
+              <br />
+            </Text>
+          </Show>
         </Match>
         <Match when={x() === 11}>
-        <Show when={x() === 11}>
-          <Text>
-            <NoEmployment />
-            <br />
-            <EmploymentMonth />
-            <br />
-            <br />
-            <EmploymentYear />
-            <br />
-            <br />
-            <Center>
-            <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
-          </Center>
-        <br />
-          </Text>
-        </Show>
-        </Match>
-        <Match when={x() === 12}>
-        <Show when={x() === 12}>
-          <Text>
-            <NoEmployment />
-            <br />
-            <EmploymentMonth />
-            <br />
-            <br />
-            <EmploymentYear />
-            <br />
-            <br />
-            <Center>
-            <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
-          </Center>
-        <br />
-          </Text>
-        </Show>
+          <Show when={x() === 11}>
+            <Text>
+              <NoEmployment />
+              <br />
+              <EmploymentMonth />
+              <br />
+              <br />
+              <EmploymentYear />
+              <br />
+              <br />
+              <Center>
+                <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
+              </Center>
+              <br />
+            </Text>
+          </Show>
         </Match>
       </Switch>
       <Center>
         <Text color={"red"} size={"2xl"} fontWeight={"$bold"}>{errorSum()}</Text>
       </Center>
-    
-<br />
+
+      <br />
       <HStack spacing={"28rem"}>
 
         <Button colorScheme="danger" justifyContent={"end"} onclick={() => {
@@ -262,7 +245,7 @@ function AnswerFlowAboutYou(props) {
             setX(x() - 6);
           }
           if (x() === 7) {
-            setX(x() -1 );
+            setX(x() - 1);
           }
           if (x() === 1) {
             setOpen(2);
@@ -272,16 +255,21 @@ function AnswerFlowAboutYou(props) {
             }
           }
         }}>Tilbage</Button>
-          <Show when={x() !==4 } >
-            <Show when={x() !==12}>
-        <Button colorScheme="success" onclick={() => { 
-          if (checkValidation())
-          {
-            setX(x() + 1)
-          }}}  
-        >
-          Næste</Button>
-        </Show>
+        <Show when={x() !== 4} >
+          <Show when={x() !== 12}>
+            <Button colorScheme="success" onclick={() => { 
+              if (checkValidation()) {
+                setX(x() + 1)
+                
+              } else {
+                setX(x() +1)
+                console.log("Next kanppen. Linje 258 pt, fjern else statement, testing purpose only")
+                
+              }
+            }}
+            >
+              Næste</Button>
+          </Show>
         </Show>
       </HStack>
 
