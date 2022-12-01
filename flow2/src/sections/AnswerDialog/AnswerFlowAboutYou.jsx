@@ -14,7 +14,7 @@ import Housing from './AboutYou/Housing';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
-  const [x, setX] = createSignal(4);
+  const [x, setX] = createSignal(1);
   const [errorObject, setErrorObject] = createStore({ name: "Indsæt dit navn", email: "Indsæt din email", phone: "Indsæt kun tal til dit telefonnummer" })
   const [errorSum, setErrorSum] = createSignal("");
 
@@ -95,7 +95,7 @@ function AnswerFlowAboutYou(props) {
               return true;
             }
           }else {
-            setErrorSum("Fejl i indtastede oplysninger: Der skal vælges hvor mange børn du har")
+            setErrorSum("Fejl i indtastede oplysninger: Der skal vælges hvor mange børn du har, og indtastes deres alder")
             return false;
           }
         case 6: 
