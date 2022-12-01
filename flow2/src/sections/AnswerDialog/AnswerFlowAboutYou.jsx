@@ -1,11 +1,7 @@
 import { Text, Button, Input, HStack, Progress, ProgressIndicator, ProgressLabel, Center, Divider } from '@hope-ui/solid';
 import { createSignal, Match, Show, Switch } from 'solid-js';
 import { MitId, RKInDebtQuestion, AboutYouIntro, AboutYouName, AboutYouMail, AboutYouPhone, NoPhone, AboutYourCitizenship, AboutYourRelationship, AboutYourCoapplicant, Employer, Employer2, Children, Cars, CoopMembership, CoopMember, AboutYouDone, NoEmployment } from './FirstAnswerRKI'
-import { FaSolidUserInjured } from 'solid-icons/fa'
-import { ImUsers } from 'solid-icons/im'
-import { EmploymentMonth, EmploymentYear } from './AboutYou/EmploymentOLD';
 import { Citizenships } from './AboutYou/Citizenship';
-import { AiOutlineUserAdd } from 'solid-icons/ai'
 import { CoopMembershipComponent } from './AboutYou/CoopMembership';
 import { createStore } from "solid-js/store";
 import createCookieStore from "@solid-primitives/cookies-store";
@@ -189,42 +185,8 @@ function AnswerFlowAboutYou(props) {
             </Text>
           </Show>
         </Match>
-        <Match when={x() === 10}>
-          <Show when={x() === 10}>
-            <Text>
-              <NoEmployment />
-              <br />
-              <EmploymentMonth />
-              <br />
-              <br />
-              <EmploymentYear />
-              <br />
-              <br />
-              <Center>
-                <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
-              </Center>
-              <br />
-            </Text>
-          </Show>
-        </Match>
-        <Match when={x() === 11}>
-          <Show when={x() === 11}>
-            <Text>
-              <NoEmployment />
-              <br />
-              <EmploymentMonth />
-              <br />
-              <br />
-              <EmploymentYear />
-              <br />
-              <br />
-              <Center>
-                <Button colorScheme="success" onclick={() => { setX(x() - 5); }}>OK</Button>
-              </Center>
-              <br />
-            </Text>
-          </Show>
-        </Match>
+        
+        
       </Switch>
       <Center>
         <Text color={"red"} size={"2xl"} fontWeight={"$bold"}>{errorSum()}</Text>
