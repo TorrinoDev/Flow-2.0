@@ -12,6 +12,7 @@ export function Relationship() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=>SetUserObject({ Work: "Enlig" })}
         >
             Enlig
         </Button>
@@ -23,6 +24,7 @@ export function Relationship() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=>SetUserObject({ Work: "Gift" })}
         >
             Gift
         </Button>
@@ -33,6 +35,7 @@ export function Relationship() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=>SetUserObject({ Work: "Samlever" })}
         >
             Samlever
         </Button>
@@ -43,6 +46,7 @@ export function Relationship() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=>SetUserObject({ Work: "Skilt/separeret" })}
         >
             Skilt/separeret
         </Button>
@@ -53,6 +57,7 @@ export function Relationship() {
             width="150px"
             borderWidth="2px"
             borderColor="$neutral8"
+            onClick={()=>SetUserObject({ Work: "Enke-M/K" })}
         >
             Enke-M/K
         </Button>
