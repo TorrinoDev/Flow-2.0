@@ -10,7 +10,7 @@ import Vehicle from './AboutYou/Vehicle';
 import Employment from './AboutYou/Employment';
 import CoopMembership from './AboutYou/CoopMembership';
 import Housing from './AboutYou/Housing';
-
+import Total from './Total';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
@@ -78,6 +78,14 @@ function AnswerFlowAboutYou(props) {
           return true
         } else {
           setErrorSum("Fejl i indtastede oplysninger: Der skal korrekt indtastes en email ")
+          return false;
+        }
+        case 4: 
+        if (userObject.Employer.length>1) {
+          setErrorSum("")
+          return true
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Vælg din beskæftigelse")
           return false;
         }
         case 5:
@@ -224,7 +232,7 @@ function AnswerFlowAboutYou(props) {
         <Match when={x() === 10}>
           <Show when={x() === 10}>
             <Text>
-              <Total SetUserObject={SetUserObject} x={x} setX={setX} />
+              <Total userObject={userObject} x={x} setX={setX} />
             </Text>
           </Show>
         </Match>
@@ -252,6 +260,7 @@ function AnswerFlowAboutYou(props) {
             <Button colorScheme="success" onclick={() => { 
               if (checkValidation()) {
                 setX(x() + 1)
+                errorSum("")
               } 
             }}
             >
