@@ -4,16 +4,14 @@ import { SimpleGrid } from "@hope-ui/solid"
 import createCookieStore from "@solid-primitives/cookies-store";
 
 export function Citizenships() {
-    const [storeUser, setStoreUser, , clear] = createCookieStore()
-    function setUserSessionCookie() {
-
-    }
+    const [storeUser, setStoreUser, ,clear] = createCookieStore()
     return (
 
         <>
             <Center>
                 <HStack spacing={"0.5rem"}>
                     <Button
+                        id='userCitizenD'
                         leftIcon={<FaSolidMapPin />}
                         boxSize={128}
                         variant="default"
@@ -27,7 +25,7 @@ export function Citizenships() {
                         Dansk
                     </Button>
                     <Button
-
+                        id='userCitizenUMA'
                         boxSize={128}
                         variant="default"
                         size="md"
@@ -41,7 +39,7 @@ export function Citizenships() {
                         arbejdstilladelse
                     </Button>
                     <Button
-
+                        id='userCitizenUUA'
                         boxSize={128}
                         variant="default"
                         size="md"

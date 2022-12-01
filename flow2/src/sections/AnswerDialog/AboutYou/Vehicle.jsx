@@ -14,11 +14,11 @@ function Vehicle(props) {
       <Cars />
       <Center>
         <HStack spacing={"0.5rem"}>
-          <Button leftIcon={<BsBicycle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Ingen bil</Button>
-          <Button leftIcon={<FaSolidCar boxSize={18} />} onclick={() => { setY(4); }}>En bil</Button>
-          <Button leftIcon={<FaSolid2 boxSize={18} />} onclick={() => { setY(5); }}>To biler</Button>
+          <Button leftIcon={<BsBicycle boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Car: "None" })  }}>Ingen bil</Button>
+          <Button leftIcon={<FaSolidCar boxSize={18} />} onclick={() => { setY(4);  SetUserObject({ Car: "One" }) }}>En bil</Button>
+          <Button leftIcon={<FaSolid2 boxSize={18} />} onclick={() => { setY(5);  SetUserObject({ Car: "Three" }) }}>To biler</Button>
 
-          <Button leftIcon={<BiSolidCarGarage boxSize={18} />} onclick={() => { setY(6); }}>Flere biler</Button>
+          <Button leftIcon={<BiSolidCarGarage boxSize={18} />} onclick={() => { setY(6);  SetUserObject({ Car: "Multiple" }) }}>Flere biler</Button>
 
 
         </HStack>
@@ -29,7 +29,12 @@ function Vehicle(props) {
             <br />
             <div>Biltype 1</div>
             <br />
-            <Input oninput={(event) => SetUserObject({ Children: event.currentTarget.value })} placeholder='Biltype 1'></Input>
+            <div>Vælg biltype 1</div>
+            <SimpleSelect placeholder="Biltype 1">
+              <SimpleOption value="Privatbil">Privatbil</SimpleOption>
+              <SimpleOption value="Firmabil">Firmabil</SimpleOption>
+              <SimpleOption value="Leasingbil">Leasingbil</SimpleOption>
+            </SimpleSelect>
           </Show>
         </Match>
         <Match when={y() === 5}>
