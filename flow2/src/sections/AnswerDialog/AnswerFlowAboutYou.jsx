@@ -215,7 +215,7 @@ function AnswerFlowAboutYou(props) {
               <AboutYouDone />
               <br />
               <Center>
-                <Button colorScheme="success" onclick={() => { setX(x() + 2); }}>OK</Button>
+                <Button colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
               </Center>
             </Text>
           </Show>
