@@ -14,7 +14,7 @@ import Total from './Total';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
-  const [x, setX] = createSignal(1);
+  const [x, setX] = createSignal(3);
   const [errorObject, setErrorObject] = createStore({ name: "Indsæt dit navn", email: "Indsæt din email", phone: "Indsæt kun tal til dit telefonnummer" })
   const [errorSum, setErrorSum] = createSignal("");
 
@@ -54,6 +54,7 @@ function AnswerFlowAboutYou(props) {
   function checkValidation()
   {
     console.log(userObject)
+    console.log(x())
     switch(x()) {
       case 1:
         if (errorObject.email.length < 1 && errorObject.name.length < 1 && errorObject.phone.length < 1) {
@@ -73,7 +74,7 @@ function AnswerFlowAboutYou(props) {
           return false;
         }
         case 3: 
-        if (userObject.CohabitingEmail.length>1) {
+        if (userObject.CohabitingEmail!=undefined) {
           setErrorSum("")
           return true
         } else {
@@ -81,7 +82,7 @@ function AnswerFlowAboutYou(props) {
           return false;
         }
         case 4: 
-        if (userObject.Employer.length>1) {
+        if (userObject.Employer!=undefined) {
           setErrorSum("")
           return true
         } else {
@@ -89,25 +90,28 @@ function AnswerFlowAboutYou(props) {
           return false;
         }
         case 5:
-          if (userObject.Children.length>1) {
-            if (userObject.child.childOne.length>=1 && userObject.Children=="One"){
+          if (userObject.Children!=undefined) {
+            if (userObject.child!=undefined && userObject.child.childOne.length>1 && userObject.Children==="One"){
               setErrorSum("")
               return true;
             }
-            else if (userObject.child.childTwo.length>=1 && userObject.Children=="Two") {
+            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.Children==="Two") {
               setErrorSum("")
               return true;
             }
-            else if (userObject.Children=="3,more") {
+            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.child.childThree.length>=1 && userObject.Children==="3,more") {
               setErrorSum("")
               return true;
+            } else {
+              setErrorSum("Fejl i indtastede oplysninger: Der skal vælges hvor mange børn du har, og indtastes deres alder")
+              return false;
             }
           }else {
             setErrorSum("Fejl i indtastede oplysninger: Der skal vælges hvor mange børn du har, og indtastes deres alder")
             return false;
           }
         case 6: 
-        if (userObject.Car.length>1) {
+        if (userObject.Car!=undefined) {
           setErrorSum("")
           return true
         } else {

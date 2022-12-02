@@ -17,16 +17,21 @@ function Total(props) {
         <Text id='phone'>phone:{userObject.AboutYouPhone}</Text>
         <Text id='CitizenShip'>CitizenShip:{storeUser.Citizenship}</Text>
         <Text id='car'>car: {userObject.Car}</Text> 
-        <Text id='housing'>car: {userObject.Housing}</Text> 
-        <Text id='coopMemberShip'>car: {userObject.CoopMemberShip}</Text> 
+        <Text id='housing'> housing: {userObject.Housing}</Text> 
+        <Text id='coopMemberShip'>coopMemberShip: {userObject.CoopMemberShip}</Text> 
         <Text id='children'>children: {userObject.Children}</Text> 
-        <Show when={userObject.child.childOne.length>=1}>
-            <Text id='childOne'>childOne:{userObject.child.childOne}</Text>
+        <Show when={userObject.child!=undefined}>
+            <Show when={userObject.child.childOne.length>=1}>
+                <Text id='childOne'>childOne:{userObject.child.childOne}</Text>
+            </Show>
+            <Show when={userObject.child.childTwo.length>=1}>
+                <Text id='childTwo'>childTwo:{userObject.child.childTwo}</Text>
+            </Show>
+            <Show when={userObject.child.childThree.length>=1}>
+                <Text id='childTwo'>childTwo:{userObject.child.childThree}</Text>
+            </Show>
         </Show>
-        <Show when={userObject.child.childTwo.length>=1}>
-            <Text id='childTwo'>childTwo:{userObject.child.childTwo}</Text>
-        </Show>
-        <Show when={userObject.CohabitingEmail.length>1}>
+        <Show when={userObject.CohabitingEmail!=undefined}>
             <Text id='CohabitingEmail'>CohabitingEmail:{userObject.CohabitingEmail}</Text>
         </Show>
         <Show when={userObject.CoopMember!=undefined}>

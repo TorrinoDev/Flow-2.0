@@ -43,7 +43,7 @@ function Employment(props) {
 
   function validationInput(inputText) {
     if (inputText.length>1) {
-      SetUserObject({ Employer: event.currentTarget.value })
+      SetUserObject({ Employer: inputText })
       setError("")
       valInput=true;
     } 
