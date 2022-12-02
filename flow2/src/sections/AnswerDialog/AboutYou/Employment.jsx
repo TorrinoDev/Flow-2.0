@@ -18,19 +18,19 @@ function Employment(props) {
 
 
       <SimpleGrid columns={2} gap="$4">
-        <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setY(1); }}>Funktionær</Button>
+        <Button id='funktionærButton' leftIcon={<ImCross boxSize={18} />} onclick={() => { setY(1); }}>Funktionær</Button>
 
-        <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); }}>Selvstændig</Button>
-        <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(1); }}>Tjenestemand</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(1); }}>Anden ansættelse</Button>
+        <Button id='selvstændigButton' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); }}>Selvstændig</Button>
+        <Button id='tjenestemandButton' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(1); }}>Tjenestemand</Button>
+        <Button id='otherEmployButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(1); }}>Anden ansættelse</Button>
 
 
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Under uddannelse</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Pensionist</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Hjemmegående</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(2); }}>Ledig</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Efterløn</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(1); }}>Midlertidigt job</Button>
+        <Button id='underEducationButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Under uddannelse</Button>
+        <Button id='pensionistButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Pensionist</Button>
+        <Button id='hjemmegåendeButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Hjemmegående</Button>
+        <Button id='ledigButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(2); }}>Ledig</Button>
+        <Button id='efterlønButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Efterløn</Button>
+        <Button id='tempJobButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(1); }}>Midlertidigt job</Button>
       </SimpleGrid>
 
 
@@ -39,11 +39,11 @@ function Employment(props) {
           <Show when={y() === 1}>
             <br />
             <Employer></Employer>
-            <Input oninput={(event) => SetUserObject({ Employer: event.currentTarget.value })} placeholder='Hvor er du ansat?'></Input>
+            <Input id='employmentLocationInput' oninput={(event) => SetUserObject({ Employer: event.currentTarget.value })} placeholder='Hvor er du ansat?'></Input>
             
             <Employer2></Employer2>
-            <SimpleGrid columns={2} gap="$4">
-            <SimpleSelect placeholder="Vælg måned">
+            <SimpleGrid  columns={2} gap="$4">
+            <SimpleSelect id='ansatMånedDropdown' placeholder="Vælg måned">
               <SimpleOption value="Januar">Januar</SimpleOption>
               <SimpleOption value="Febuar">Febuar</SimpleOption>
               <SimpleOption value="Marts">Marts</SimpleOption>
@@ -58,7 +58,7 @@ function Employment(props) {
               <SimpleOption value="December">December</SimpleOption>
             </SimpleSelect>
 
-            <SimpleSelect placeholder="Vælg år">
+            <SimpleSelect id='ansatÅrDropdown' placeholder="Vælg år">
               <SimpleOption value="2022">2022</SimpleOption>
               <SimpleOption value="2021">2021</SimpleOption>
               <SimpleOption value="2020">2020</SimpleOption>
@@ -82,7 +82,7 @@ function Employment(props) {
               <br />
               <br />
 
-              <Button colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
+              <Button id='okButton' colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
 
             </Center>
             <br />

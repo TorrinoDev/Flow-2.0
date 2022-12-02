@@ -73,8 +73,8 @@ function CoopMembership(props) {
 
                 <HStack spacing="$40">
 
-                    <Button leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); }}>Ja</Button>
-                    <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); }}>
+                    <Button id='coopMedlemJa' leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); }}>Ja</Button>
+                    <Button id='coopMedlemNej' rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); }}>
                         Nej
                     </Button>
                 </HStack>
@@ -87,7 +87,7 @@ function CoopMembership(props) {
                         <br />
                         <CoopMember />
                         <br />
-                        <Input oninput={(event) => SetUserObject({ CoopMember: event.currentTarget.value })} placeholder='Medlemsnummer'></Input>
+                        <Input id='coopMedlemNrInput' oninput={(event) => SetUserObject({ CoopMember: event.currentTarget.value })} placeholder='Medlemsnummer'></Input>
                     </Show>
                 </Match>
             </Switch>
