@@ -31,12 +31,12 @@ function AnswerFlowMitId(props) {
         <Text>
             <MitId></MitId>
             <Text id='errorcodeMitId' color={"red"}>{error()}</Text>
-            <Input onInput={(event)=>validation(event.currentTarget.value)} placeholder='MitId Brugernavn'></Input>
+            <Input id="brugernavnInput" onInput={(event)=>validation(event.currentTarget.value)} placeholder='MitId Brugernavn'></Input>
         </Text>
         <br />
         <HStack spacing={"28rem"}>
   <Button colorScheme="danger" justifyContent={"end"} onclick={()=> setOpen(1)}>Tilbage</Button>
-  <Button colorScheme="success" onclick={()=> next()}>Login</Button>
+  <Button colorScheme="success" id="loginButton" onclick={()=> next()}>Login</Button>
   </HStack>
     </div>
   );

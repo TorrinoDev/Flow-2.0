@@ -91,15 +91,15 @@ function AnswerFlowAboutYou(props) {
         }
         case 5:
           if (userObject.Children!=undefined) {
-            if (userObject.child!=undefined && userObject.child.childOne.length>=1 && userObject.Children==="1"){
+            if (userObject.child!=undefined && userObject.child.childOne.length>=1 && userObject.Children==="One"){
               setErrorSum("")
               return true;
             }
-            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.Children==="2") {
+            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.Children==="Two") {
               setErrorSum("")
               return true;
             }
-            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.child.childThree.length>=1 && userObject.Children==="3") {
+            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.child.childThree.length>=1 && userObject.Children==="3,more") {
               setErrorSum("")
               return true;
             } else {
@@ -151,19 +151,19 @@ function AnswerFlowAboutYou(props) {
               <AboutYouIntro></AboutYouIntro>
               <AboutYouName></AboutYouName>
               <Text color={"red"}>{errorObject.name}</Text>
-              <Input id='userNameInput' oninput={(event) => validation(event.currentTarget.value, 0)} placeholder='Navn'></Input>
+              <Input id='userNameInput' value={userObject.AboutYouName} oninput={(event) => validation(event.currentTarget.value, 0)} placeholder='Navn'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouMail></AboutYouMail>
               <Text color={"red"}>{errorObject.email}</Text>
-              <Input id='userEmailInput' oninput={(event) => validation(event.currentTarget.value, 1)} placeholder='E-mail'></Input>
+              <Input id='userEmailInput' value={userObject.AboutYouMail} oninput={(event) => validation(event.currentTarget.value, 1)} placeholder='E-mail'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouPhone></AboutYouPhone>
               <Text color={"red"}>{errorObject.phone}</Text>
-              <Input id='userPhoneInput' oninput={(event) => validation(event.currentTarget.value, 2)} type="number" placeholder='Mobilnummer'></Input>
+              <Input id='userPhoneInput' value={userObject.AboutYouPhone} oninput={(event) => validation(event.currentTarget.value, 2)} type="number" placeholder='Mobilnummer'></Input>
             </Text>
             <br />
             <Text><NoPhone></NoPhone></Text>
@@ -243,7 +243,7 @@ function AnswerFlowAboutYou(props) {
               <AboutYouDone />
               <br />
               <Center>
-                <Button colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
+                <Button id='okButton' colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
               </Center>
             </Text>
           </Show>
@@ -277,11 +277,7 @@ function AnswerFlowAboutYou(props) {
         }}>Tilbage</Button>
         <Show when={x() !== 4} >
           <Show when={x() !== 12}>
-            <Show when={x() !==6}>
-              <Show when={x() !==9}>
-                <Show when={x() !==10}>
-
-            <Button colorScheme="success" onclick={() => { 
+            <Button id="nextButton" colorScheme="success" onclick={() => { 
               if (checkValidation()) {
                 setX(x() + 1)
                 errorSum("")
@@ -289,9 +285,6 @@ function AnswerFlowAboutYou(props) {
             }}
             >
               Næste</Button>
-              </Show>
-              </Show>
-          </Show>
           </Show>
         </Show>
       </HStack>

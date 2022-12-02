@@ -84,19 +84,19 @@ function Employment(props) {
       <JobSituation />
 
       <SimpleGrid columns={2} gap="$4">
-        <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { validationbtn ("Funktionær",1);setError("")} }>Funktionær</Button>
+        <Button id='funktionærButton' leftIcon={<ImCross boxSize={18} />} onclick={() => { validationbtn ("Funktionær",1);setError("")} }>Funktionær</Button>
 
-        <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { validationbtn ("Selvstændig",1);setError("")} }>Selvstændig</Button>
-        <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { validationbtn ("Tjenestemand",1);setError("") }}>Tjenestemand</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Anden ansættelse",1);setError("")}}>Anden ansættelse</Button>
+        <Button id='selvstændigButton' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { validationbtn ("Selvstændig",1);setError("")} }>Selvstændig</Button>
+        <Button id='tjenestemandButton' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { validationbtn ("Tjenestemand",1);setError("") }}>Tjenestemand</Button>
+        <Button id='otherEmployButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Anden ansættelse",1);setError("")}}>Anden ansættelse</Button>
 
 
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Under uddannelse",2);setError("")}}>Under uddannelse</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Pensionist",2);setError("")}}>Pensionist</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Hjemmegående",2);setError("")}}>Hjemmegående</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Ledig",3);setError("")}}>Ledig</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Efterløn",2);setError("")}}>Efterløn</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Midlertidigt job",1);setError("") }}>Midlertidigt job</Button>
+        <Button id='underEducationButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Under uddannelse",2);setError("")}}>Under uddannelse</Button>
+        <Button id='pensionistButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Pensionist",2);setError("")}}>Pensionist</Button>
+        <Button id='hjemmegåendeButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Hjemmegående",2);setError("")}}>Hjemmegående</Button>
+        <Button id='ledigButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Ledig",3);setError("")}}>Ledig</Button>
+        <Button id='efterlønButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Efterløn",2);setError("")}}>Efterløn</Button>
+        <Button id='tempJobButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Midlertidigt job",1);setError("") }}>Midlertidigt job</Button>
       </SimpleGrid>
 
 
@@ -105,11 +105,11 @@ function Employment(props) {
           <Show when={y() === 1}>
             <br />
             <Employer></Employer>
-            <Input onInput={(event) => validationInput(event.currentTarget.value)} placeholder='Hvor er du ansat?'></Input>
+            <Input id='employmentLocationInput' onInput={(event) => validationInput(event.currentTarget.value)} placeholder='Hvor er du ansat?'></Input>
             
             <Employer2></Employer2>
-            <SimpleGrid columns={2} gap="$4">
-            <SimpleSelect value={month()} onChange={setMonth} placeholder="Vælg måned">
+            <SimpleGrid  columns={2} gap="$4">
+            <SimpleSelect value={month()} onChange={setMonth} id='ansatMånedDropdown' placeholder="Vælg måned">
               <SimpleOption value="Januar">Januar</SimpleOption>
               <SimpleOption value="Febuar">Febuar</SimpleOption>
               <SimpleOption value="Marts">Marts</SimpleOption>
@@ -124,7 +124,7 @@ function Employment(props) {
               <SimpleOption value="December">December</SimpleOption>
             </SimpleSelect>
 
-            <SimpleSelect value={year()} onChange={setYear} placeholder="Vælg år">
+            <SimpleSelect value={year()} onChange={setYear} id='ansatÅrDropdown' placeholder="Vælg år">
               <SimpleOption value="2022">2022</SimpleOption>
               <SimpleOption value="2021">2021</SimpleOption>
               <SimpleOption value="2020">2020</SimpleOption>
@@ -150,9 +150,11 @@ function Employment(props) {
       <Text textAlign={"center"} color={"red"} size={"2xl"}>{error()}</Text>
              
             <Text textAlign={"center"}>
-              <Button  colorScheme="success" onclick={() => { validationInputMY(0) }}>OK</Button>
+              <Button id='okButton'  colorScheme="success" onclick={() => { validationInputMY(0) }}>OK</Button>
 
             </Text>
+
+
 
             <br />
             
@@ -166,7 +168,7 @@ function Employment(props) {
 
           <NoEmployment />
           <SimpleGrid columns={2} gap="$4">
-            <SimpleSelect value={month()} onChange={setMonth} placeholder="Vælg måned">
+            <SimpleSelect id='noEmploymentMonth' value={month()} onChange={setMonth} placeholder="Vælg måned">
               <SimpleOption value="Januar">Januar</SimpleOption>
               <SimpleOption value="Febuar">Febuar</SimpleOption>
               <SimpleOption value="Marts">Marts</SimpleOption>
@@ -181,7 +183,7 @@ function Employment(props) {
               <SimpleOption value="December">December</SimpleOption>
             </SimpleSelect>
 
-            <SimpleSelect value={year()} onChange={setYear}  placeholder="Vælg år">
+            <SimpleSelect id='noEmploymentYear' value={year()} onChange={setYear}  placeholder="Vælg år">
               <SimpleOption value="2022">2022</SimpleOption>
               <SimpleOption value="2021">2021</SimpleOption>
               <SimpleOption value="2020">2020</SimpleOption>
@@ -204,7 +206,7 @@ function Employment(props) {
               <Text textAlign={"center"} color={"red"} size={"2xl"}>{error()}</Text>
              
             <Text textAlign={"center"}>
-              <Button  colorScheme="success" onclick={() => { validationInputMY(1) }}>OK</Button>
+              <Button id='okButton1' colorScheme="success" onclick={() => { validationInputMY(1) }}>OK</Button>
 
             </Text>
 
