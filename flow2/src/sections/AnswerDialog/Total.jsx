@@ -17,29 +17,29 @@ function Total(props) {
         <Text id='phone'>phone:{userObject.AboutYouPhone}</Text>
         <Text id='CitizenShip'>CitizenShip:{storeUser.Citizenship}</Text>
         <Text id='car'>car: {userObject.Car}</Text> 
+        <Text id='housing'>car: {userObject.Housing}</Text> 
+        <Text id='coopMemberShip'>car: {userObject.CoopMemberShip}</Text> 
         <Text id='children'>children: {userObject.Children}</Text> 
-        <Show when={userObject.child.childOne.length>1}>
+        <Show when={userObject.child.childOne.length>=1}>
             <Text id='childOne'>childOne:{userObject.child.childOne}</Text>
         </Show>
-        <Show when={userObject.child.childTwo.length>1}>
+        <Show when={userObject.child.childTwo.length>=1}>
             <Text id='childTwo'>childTwo:{userObject.child.childTwo}</Text>
         </Show>
         <Show when={userObject.CohabitingEmail.length>1}>
             <Text id='CohabitingEmail'>CohabitingEmail:{userObject.CohabitingEmail}</Text>
         </Show>
-        <Match when={userObject.CoopMember.length>1}>
-        <Show when={userObject.CoopMember.length>1}>
+        <Show when={userObject.CoopMember!=undefined}>
             <Text id='CoopMember'>CoopMember:{userObject.CoopMember}</Text>
         </Show>
-        </Match>
-        <Show when={userObject.Employer.length>1}>
+        <Show when={userObject.Employer!=undefined}>
             <Text id='Employer'>Employer:{userObject.Employer}</Text>
         </Show>
         <Text id='Employment'>Employment: {userObject.Employment}</Text> 
-        <Show when={userObject.EmploymentMonth.length>1}>
+        <Show when={userObject.EmploymentMonth!=undefined}>
             <Text id='Employment Month'>Employment Month:{userObject.EmploymentMonth}</Text>
         </Show>
-        <Show when={userObject.EmploymentYear.length>1}>
+        <Show when={userObject.EmploymentYear!=undefined}>
             <Text id='Employment Year'>Employment Year:{userObject.EmploymentYear}</Text>
         </Show>
     </div>
