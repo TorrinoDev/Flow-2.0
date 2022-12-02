@@ -75,8 +75,8 @@ function CoopMembership(props) {
 
                 <HStack spacing="$40">
 
-                    <Button leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); SetUserObject({ CoopMemberShip: "True" });}}>Ja</Button>
-                    <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ CoopMemberShip: "false" });}}>
+                    <Button leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); SetUserObject({ CoopMemberShip: "Ja" });}}>Ja</Button>
+                    <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ CoopMemberShip: "Nej" });}}>
                         Nej
                     </Button>
                 </HStack>

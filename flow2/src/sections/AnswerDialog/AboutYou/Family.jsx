@@ -53,11 +53,11 @@ function Family(props) {
             <Children />
             <Center>
                 <HStack spacing={"0.5rem"}>
-                    <Button id='userRelationN' leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Children: "None" }) }}>Ingen</Button>
-                    <Button id='userRelationYO' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Children: "One" }) }}>Ja, et barn</Button>
-                    <Button id='userRelationYT' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(2); SetUserObject({ Children: "Two" }) }}>Ja, to børn</Button>
+                    <Button id='userRelationN' leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Children: "Ingen" }) }}>Ingen</Button>
+                    <Button id='userRelationYO' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Children: "1" }) }}>Ja, et barn</Button>
+                    <Button id='userRelationYT' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(2); SetUserObject({ Children: "2" }) }}>Ja, to børn</Button>
 
-                    <Button id='userRelationYM' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(3); SetUserObject({ Children: "3,more" }) }}>Ja, 3 eller flere</Button>
+                    <Button id='userRelationYM' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(3); SetUserObject({ Children: "3" }) }}>Ja, 3 eller flere</Button>
 
 
                 </HStack>

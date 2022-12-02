@@ -46,9 +46,10 @@ function AnswerFlowDebt(props) {
             </div> }
   <br/>
   <HStack spacing={"28rem"} justifyContent={"end"}>
-  <Button colorScheme="danger"  onclick={()=> setOpen(0)}>Tilbage</Button>
   {isTrue() && <Button colorScheme="success" onclick={()=> next()}>Næste</Button>}
   </HStack>
+  <Button colorScheme="danger"  onclick={()=> setOpen(0)}>Tilbage</Button>
+ 
     </div>
   );
 }

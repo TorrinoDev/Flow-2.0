@@ -1,4 +1,4 @@
-import { Center } from "@hope-ui/solid"
+import { Center, Divider } from "@hope-ui/solid"
 
 export function RKInDebtQuestion() {
     return <div>
@@ -142,4 +142,22 @@ export function JobSituation() {
    <br />
     </div>
 
+}
+export function Oversigt() {
+    return <div>
+        <h2 style="text-align:center;color:#BA0409;font-size:25px">Oversigt</h2>
+        <Divider />
+    </div>
+}
+export function PersonOplysninger() {
+    return <div>
+        <h2 style="text-align:center;color:#BA0409">Personoplysninger</h2>
+        <Divider />
+    </div>
+}
+export function Husstand() {
+    return <div>
+        <h2 style="text-align:center;color:#BA0409">Husstand</h2>
+        <Divider />
+    </div>
 }
