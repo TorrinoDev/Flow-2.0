@@ -114,6 +114,22 @@ function AnswerFlowAboutYou(props) {
           setErrorSum("Fejl i indtastede oplysninger: Der skal vælge en af mulighederne ")
           return false;
         }
+        case 7: 
+        if (userObject.Housing.length>1) {
+          setErrorSum("")
+          return true
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Der skal vælge en af mulighederne ")
+          return false;
+        }
+        case 8:
+        if (userObject.CoopMemberShip.length>1) {
+          setErrorSum("")
+          return true
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Der skal vælge en af mulighederne ")
+          return false;
+        }
         
     }
   }

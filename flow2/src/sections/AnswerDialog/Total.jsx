@@ -17,6 +17,8 @@ function Total(props) {
         <Text id='phone'>phone:{userObject.AboutYouPhone}</Text>
         <Text id='CitizenShip'>CitizenShip:{storeUser.Citizenship}</Text>
         <Text id='car'>car: {userObject.Car}</Text> 
+        <Text id='housing'>car: {userObject.Housing}</Text> 
+        <Text id='coopMemberShip'>car: {userObject.CoopMemberShip}</Text> 
         <Text id='children'>children: {userObject.Children}</Text> 
         <Show when={userObject.child.childOne.length>=1}>
             <Text id='childOne'>childOne:{userObject.child.childOne}</Text>

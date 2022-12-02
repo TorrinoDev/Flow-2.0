@@ -20,14 +20,14 @@ function Housing(props) {
       <SimpleGrid columns={2} gap="$4">
         <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); }}>I ejerbolig</Button>
 
-        <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setX(x() + 1); }}>I andelsbolig</Button>
-        <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setX(x() + 1); }}>Til leje</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Hos forældre</Button>
+        <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"I andelsbolig" })}}>I andelsbolig</Button>
+        <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"Til leje" }) }}>Til leje</Button>
+        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"Hos forældre" }) }}>Hos forældre</Button>
 
 
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>På kollegie</Button>
+        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"På kollegie" }) }}>På kollegie</Button>
 
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>C/O</Button>
+        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"C/O" })}}>C/O</Button>
 
 
       </SimpleGrid>
