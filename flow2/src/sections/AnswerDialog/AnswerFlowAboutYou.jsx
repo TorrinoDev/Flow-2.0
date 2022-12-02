@@ -14,7 +14,7 @@ import Total from './Total';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
-  const [x, setX] = createSignal(1);
+  const [x, setX] = createSignal(4);
   const [errorObject, setErrorObject] = createStore({ name: "Indsæt dit navn", email: "Indsæt din email", phone: "Indsæt kun tal til dit telefonnummer" })
   const [errorSum, setErrorSum] = createSignal("");
 
@@ -91,7 +91,7 @@ function AnswerFlowAboutYou(props) {
         }
         case 5:
           if (userObject.Children!=undefined) {
-            if (userObject.child!=undefined && userObject.child.childOne.length>1 && userObject.Children==="One"){
+            if (userObject.child!=undefined && userObject.child.childOne.length>=1 && userObject.Children==="One"){
               setErrorSum("")
               return true;
             }
