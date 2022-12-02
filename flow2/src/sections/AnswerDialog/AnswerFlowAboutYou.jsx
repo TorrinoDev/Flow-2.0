@@ -14,7 +14,7 @@ import Total from './Total';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
-  const [x, setX] = createSignal(4);
+  const [x, setX] = createSignal(1);
   const [errorObject, setErrorObject] = createStore({ name: "Indsæt dit navn", email: "Indsæt din email", phone: "Indsæt kun tal til dit telefonnummer" })
   const [errorSum, setErrorSum] = createSignal("");
 
@@ -151,19 +151,19 @@ function AnswerFlowAboutYou(props) {
               <AboutYouIntro></AboutYouIntro>
               <AboutYouName></AboutYouName>
               <Text color={"red"}>{errorObject.name}</Text>
-              <Input id='userNameInput' oninput={(event) => validation(event.currentTarget.value, 0)} placeholder='Navn'></Input>
+              <Input id='userNameInput' value={userObject.AboutYouName} oninput={(event) => validation(event.currentTarget.value, 0)} placeholder='Navn'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouMail></AboutYouMail>
               <Text color={"red"}>{errorObject.email}</Text>
-              <Input id='userEmailInput' oninput={(event) => validation(event.currentTarget.value, 1)} placeholder='E-mail'></Input>
+              <Input id='userEmailInput' value={userObject.AboutYouMail} oninput={(event) => validation(event.currentTarget.value, 1)} placeholder='E-mail'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouPhone></AboutYouPhone>
               <Text color={"red"}>{errorObject.phone}</Text>
-              <Input id='userPhoneInput' oninput={(event) => validation(event.currentTarget.value, 2)} type="number" placeholder='Mobilnummer'></Input>
+              <Input id='userPhoneInput' value={userObject.AboutYouPhone} oninput={(event) => validation(event.currentTarget.value, 2)} type="number" placeholder='Mobilnummer'></Input>
             </Text>
             <br />
             <Text><NoPhone></NoPhone></Text>
