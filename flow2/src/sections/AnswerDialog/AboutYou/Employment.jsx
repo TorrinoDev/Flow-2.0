@@ -168,7 +168,7 @@ function Employment(props) {
 
           <NoEmployment />
           <SimpleGrid columns={2} gap="$4">
-            <SimpleSelect value={month()} onChange={setMonth} placeholder="Vælg måned">
+            <SimpleSelect id='noEmploymentMonth' value={month()} onChange={setMonth} placeholder="Vælg måned">
               <SimpleOption value="Januar">Januar</SimpleOption>
               <SimpleOption value="Febuar">Febuar</SimpleOption>
               <SimpleOption value="Marts">Marts</SimpleOption>
@@ -183,7 +183,7 @@ function Employment(props) {
               <SimpleOption value="December">December</SimpleOption>
             </SimpleSelect>
 
-            <SimpleSelect value={year()} onChange={setYear}  placeholder="Vælg år">
+            <SimpleSelect id='noEmploymentYear' value={year()} onChange={setYear}  placeholder="Vælg år">
               <SimpleOption value="2022">2022</SimpleOption>
               <SimpleOption value="2021">2021</SimpleOption>
               <SimpleOption value="2020">2020</SimpleOption>
@@ -206,7 +206,7 @@ function Employment(props) {
               <Text textAlign={"center"} color={"red"} size={"2xl"}>{error()}</Text>
              
             <Text textAlign={"center"}>
-              <Button  colorScheme="success" onclick={() => { validationInputMY(1) }}>OK</Button>
+              <Button id='okButton1' colorScheme="success" onclick={() => { validationInputMY(1) }}>OK</Button>
 
             </Text>
 

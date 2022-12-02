@@ -14,7 +14,7 @@ import Total from './Total';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
-  const [x, setX] = createSignal(3);
+  const [x, setX] = createSignal(1);
   const [errorObject, setErrorObject] = createStore({ name: "Indsæt dit navn", email: "Indsæt din email", phone: "Indsæt kun tal til dit telefonnummer" })
   const [errorSum, setErrorSum] = createSignal("");
 
@@ -243,7 +243,7 @@ function AnswerFlowAboutYou(props) {
               <AboutYouDone />
               <br />
               <Center>
-                <Button colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
+                <Button id='okButton' colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
               </Center>
             </Text>
           </Show>

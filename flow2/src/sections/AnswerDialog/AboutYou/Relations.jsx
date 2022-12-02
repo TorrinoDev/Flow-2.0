@@ -47,7 +47,7 @@ function Relations(props) {
                 
                 <HStack spacing="$40">
                   
-                  <Button leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setZ(1); }}>Ja tak, tilføj medansøger</Button>
+                  <Button id='jaMedansøgerButton' leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setZ(1); }}>Ja tak, tilføj medansøger</Button>
                   <Button id='nejMedansøgerButton' rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enlig" }) }}>
                     Nej tak, jeg ansøger alene
                   </Button>
@@ -61,7 +61,7 @@ function Relations(props) {
             
           <div>Ægtefælles/samlevers Email</div>
           <Text color={"red"}>{errorCode()}</Text>
-            <Input oninput={(event) => validation(event.currentTarget.value)} placeholder='Email tilhørende ægtefælle/samlever'></Input>
+            <Input id='medansøgerMailInput' oninput={(event) => validation(event.currentTarget.value)} placeholder='Email tilhørende ægtefælle/samlever'></Input>
                       </Show>
                     </Match>
                   </Switch>
