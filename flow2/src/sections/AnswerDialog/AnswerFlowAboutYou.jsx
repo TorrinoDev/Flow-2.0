@@ -36,7 +36,7 @@ function AnswerFlowAboutYou(props) {
             SetUserObject({ AboutYouMail: text })
             setErrorObject({email:""})
           } else {
-            setErrorObject({email:" Email format, ex: andr12f4@zealand.dk"})
+            setErrorObject({email:" Email format, ex: Anders@eksempel.dk"})
           }
           break;
         case 2:
@@ -91,15 +91,15 @@ function AnswerFlowAboutYou(props) {
         }
         case 5:
           if (userObject.Children!=undefined) {
-            if (userObject.child!=undefined && userObject.child.childOne.length>=1 && userObject.Children==="One"){
+            if (userObject.child!=undefined && userObject.child.childOne.length>=1 && userObject.Children==="1"){
               setErrorSum("")
               return true;
             }
-            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.Children==="Two") {
+            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.Children==="2") {
               setErrorSum("")
               return true;
             }
-            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.child.childThree.length>=1 && userObject.Children==="3,more") {
+            else if (userObject.child!=undefined && userObject.child.childTwo.length>=1 && userObject.child.childOne.length>=1 && userObject.child.childThree.length>=1 && userObject.Children==="3") {
               setErrorSum("")
               return true;
             } else {
@@ -277,7 +277,11 @@ function AnswerFlowAboutYou(props) {
         }}>Tilbage</Button>
         <Show when={x() !== 4} >
           <Show when={x() !== 12}>
-            <Button id="nextButton" colorScheme="success" onclick={() => { 
+            <Show when={x() !==6}>
+              <Show when={x() !==9}>
+                <Show when={x() !==10}>
+
+                <Button id="nextButton" colorScheme="success" onclick={() => {  
               if (checkValidation()) {
                 setX(x() + 1)
                 errorSum("")
@@ -285,6 +289,9 @@ function AnswerFlowAboutYou(props) {
             }}
             >
               Næste</Button>
+              </Show>
+              </Show>
+          </Show>
           </Show>
         </Show>
       </HStack>

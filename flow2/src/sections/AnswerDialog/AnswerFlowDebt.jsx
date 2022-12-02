@@ -45,10 +45,12 @@ function AnswerFlowDebt(props) {
                 <Input id='debtInput' onInput={(event)=>validation(event.currentTarget.value)} placeholder='Hvor stor er din gæld til det offentlige?' type='number'></Input> 
             </div> }
   <br/>
-  <HStack spacing={"28rem"} justifyContent={"end"}>
+  <HStack spacing={"28rem"} >
   <Button colorScheme="danger"  onclick={()=> setOpen(0)}>Tilbage</Button>
-  {isTrue() && <Button id='nextButton' colorScheme="success" onclick={()=> next()}>Næste</Button>}
+  {isTrue() && <Button colorScheme="success" onclick={()=> next()}>Næste</Button>}
   </HStack>
+
+ 
     </div>
   );
 }

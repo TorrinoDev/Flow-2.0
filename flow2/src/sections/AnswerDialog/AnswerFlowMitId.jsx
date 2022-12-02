@@ -35,8 +35,8 @@ function AnswerFlowMitId(props) {
         </Text>
         <br />
         <HStack spacing={"28rem"}>
-  <Button colorScheme="danger" justifyContent={"end"} onclick={()=> setOpen(1)}>Tilbage</Button>
-  <Button colorScheme="success" id="loginButton" onclick={()=> next()}>Login</Button>
+        <Button colorScheme="danger" justifyContent={"start"} onclick={()=> setOpen(1)}>Tilbage</Button>
+  <Button colorScheme="success" id="loginButton"  onclick={()=> next()}>Login</Button>
   </HStack>
     </div>
   );

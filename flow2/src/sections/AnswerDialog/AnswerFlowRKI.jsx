@@ -11,7 +11,7 @@ function AnswerFlowRki(props) {
             <RKInDebtQuestion></RKInDebtQuestion>
         </Text>
         <br />
-        <Button colorScheme="success" onclick={()=> {setOpen(1)}} id="forståetKnap">Forstået</Button>
+        <Button colorScheme="success" justifyContent={"start"} onclick={()=> {setOpen(1)}} id="forståetKnap">Forstået</Button>
     </div>
   );
 }
