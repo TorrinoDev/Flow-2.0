@@ -18,7 +18,7 @@ function Housing(props) {
 
 
       <SimpleGrid columns={2} gap="$4">
-        <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); }}>I ejerbolig</Button>
+        <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"I ejerbolig" }) }}>I ejerbolig</Button>
 
         <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"I andelsbolig" })}}>I andelsbolig</Button>
         <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"Til leje" }) }}>Til leje</Button>
