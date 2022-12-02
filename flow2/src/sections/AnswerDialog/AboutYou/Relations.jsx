@@ -14,7 +14,7 @@ function Relations(props) {
   const [errorCode,setErrorCode] = createSignal()
 
   function validation(inputText){
-    if (inputText.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
+    if (inputText.match(".{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
       SetUserObject({ CohabitingEmail: inputText })
       setErrorCode("")
     } else {
