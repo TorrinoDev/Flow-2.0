@@ -11,7 +11,7 @@ function Family(props) {
     const [y, setY] = createSignal(0);
     const [error, setError] = createStore({ errorOne: "Indtast barnets alder som heltal", 
     errorTwo: "Indtast barnets alder som heltal", errorThree: "Indtast barnets alder som heltal" })
-    const [children,setChildren] = createStore({childOne:"",childTwo:""})
+    const [children,setChildren] = createStore({childOne:"",childTwo:"",childThree:""})
     const [todos, setTodos] = createSignal([]);
     
     function validation(inputText, id) {
@@ -85,10 +85,15 @@ function Family(props) {
                 <Match when={y() === 3}>
                     <Show when={y() === 3}>
 
-                    <div>
-      
-                    </div>
-
+                    <div>Barn 1 - alder</div>
+                        <Text color={"red"} size={"1xl"}>{error.errorTwo}</Text>
+                        <Input id='userRelationCAO' value={children.childOne} type='number' onInput={(event) => validation(event.currentTarget.value,1)} placeholder='Barn 1 alder'></Input>
+                        <div>Barn 2 - alder</div>
+                        <Text color={"red"} size={"1xl"}>{error.errorThree}</Text>
+                        <Input id='userRelationCAT' value={children.childTwo} type='number' onInput={(event) => validation(event.currentTarget.value,2)} placeholder='Barn 2 alder'></Input>
+                        <div>Barn 3 - alder</div>
+                        <Text color={"red"} size={"1xl"}>{error.errorThree}</Text>
+                        <Input id='userRelationCAE' value={children.childThree} type='number' onInput={(event) => validation(event.currentTarget.value,3)} placeholder='Barn 3 alder'></Input>
                     </Show>
                 </Match>
             </Switch>

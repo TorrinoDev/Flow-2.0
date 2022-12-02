@@ -1,4 +1,4 @@
-import { createSignal, Show } from 'solid-js';
+import { createSignal, Show, Match } from 'solid-js';
 import { Button, Center, Container, Divider, Text } from '@hope-ui/solid';
 import createCookieStore from "@solid-primitives/cookies-store";
 
@@ -27,9 +27,11 @@ function Total(props) {
         <Show when={userObject.CohabitingEmail.length>1}>
             <Text id='CohabitingEmail'>CohabitingEmail:{userObject.CohabitingEmail}</Text>
         </Show>
+        <Match when={userObject.CoopMember.length>1}>
         <Show when={userObject.CoopMember.length>1}>
             <Text id='CoopMember'>CoopMember:{userObject.CoopMember}</Text>
         </Show>
+        </Match>
         <Show when={userObject.Employer.length>1}>
             <Text id='Employer'>Employer:{userObject.Employer}</Text>
         </Show>
