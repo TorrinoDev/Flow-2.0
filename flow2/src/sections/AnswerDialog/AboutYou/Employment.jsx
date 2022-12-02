@@ -5,6 +5,7 @@ import { FaSolidChildDress, FaSolidChildren } from 'solid-icons/fa'
 import { ImCross, ImUsers } from 'solid-icons/im'
 import { FaSolidUsersRectangle } from 'solid-icons/fa'
 import { AiOutlineUserAdd } from 'solid-icons/ai'
+import { BsInputCursorText } from 'solid-icons/bs';
 
 
 
@@ -12,25 +13,90 @@ function Employment(props) {
   const { SetUserObject, x, setX } = props
   const [y, setY] = createSignal(0);
   const [z, setZ] = createSignal(0);
+  const [error,setError] = createSignal("")
+  const [month,setMonth] = createSignal()
+  const [year,setYear] = createSignal()
+  let valInput;
+
+
+  function validationbtn (InputCursorText,toId) {
+    switch(toId) {
+      case 1:
+        if (InputCursorText.length>1) {
+          SetUserObject({ Employment: InputCursorText })
+          setY(1)
+        } 
+        break;
+      case 2: 
+      if (InputCursorText.length>1) {
+        SetUserObject({ Employment: InputCursorText })
+        setX(x() + 1)
+      }
+      break;
+      case 3:
+        if (InputCursorText.length>1) {
+          SetUserObject({ Employment: InputCursorText })
+          setY(2)
+        } 
+    }
+  }
+
+  function validationInput(inputText) {
+    if (inputText.length>1) {
+      SetUserObject({ Employer: event.currentTarget.value })
+      setError("")
+      valInput=true;
+    } 
+    else {
+      setError("Fejlmeddelse: Indtast dit arbejdes navn")
+    }
+  }
+
+  function validationInputMY(id) {
+    switch(id) {
+      case 0:
+          if (month() != undefined && year() != undefined && valInput) {
+            SetUserObject({ EmploymentMonth: month() })
+            SetUserObject({ EmploymentYear: year() })
+            setError("")
+            setX(x() + 1);
+          }else if (!valInput) {
+            setError("Fejlmeddelse: Indtast dit arbejdes navn")
+          } else {
+            setError("Fejlmeddelse: Vælg måned og år du blev ansat")
+          }
+        break;
+      case 1:
+        if (month() != undefined && year() != undefined) {
+          SetUserObject({ UnEmploymentMonth: month() })
+          SetUserObject({ UnEmploymentYear: year() })
+          setError("")
+          setX(x() +1);
+        }else {
+          setError("Fejlmeddelse: Vælg måned og år du blev ledig")
+        }
+        break;
+    }
+  }
+
   return (
     <div>
       <JobSituation />
 
-
       <SimpleGrid columns={2} gap="$4">
-        <Button id='funktionærButton' leftIcon={<ImCross boxSize={18} />} onclick={() => { setY(1); }}>Funktionær</Button>
+        <Button id='funktionærButton' leftIcon={<ImCross boxSize={18} />} onclick={() => { validationbtn ("Funktionær",1);setError("")} }>Funktionær</Button>
 
-        <Button id='selvstændigButton' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); }}>Selvstændig</Button>
-        <Button id='tjenestemandButton' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(1); }}>Tjenestemand</Button>
-        <Button id='otherEmployButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(1); }}>Anden ansættelse</Button>
+        <Button id='selvstændigButton' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { validationbtn ("Selvstændig",1);setError("")} }>Selvstændig</Button>
+        <Button id='tjenestemandButton' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { validationbtn ("Tjenestemand",1);setError("") }}>Tjenestemand</Button>
+        <Button id='otherEmployButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Anden ansættelse",1);setError("")}}>Anden ansættelse</Button>
 
 
-        <Button id='underEducationButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Under uddannelse</Button>
-        <Button id='pensionistButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Pensionist</Button>
-        <Button id='hjemmegåendeButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Hjemmegående</Button>
-        <Button id='ledigButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(2); }}>Ledig</Button>
-        <Button id='efterlønButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); }}>Efterløn</Button>
-        <Button id='tempJobButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setY(1); }}>Midlertidigt job</Button>
+        <Button id='underEducationButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Under uddannelse",2);setError("")}}>Under uddannelse</Button>
+        <Button id='pensionistButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Pensionist",2);setError("")}}>Pensionist</Button>
+        <Button id='hjemmegåendeButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Hjemmegående",2);setError("")}}>Hjemmegående</Button>
+        <Button id='ledigButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Ledig",3);setError("")}}>Ledig</Button>
+        <Button id='efterlønButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Efterløn",2);setError("")}}>Efterløn</Button>
+        <Button id='tempJobButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { validationbtn ("Midlertidigt job",1);setError("") }}>Midlertidigt job</Button>
       </SimpleGrid>
 
 
@@ -39,11 +105,11 @@ function Employment(props) {
           <Show when={y() === 1}>
             <br />
             <Employer></Employer>
-            <Input id='employmentLocationInput' oninput={(event) => SetUserObject({ Employer: event.currentTarget.value })} placeholder='Hvor er du ansat?'></Input>
+            <Input id='employmentLocationInput' onInput={(event) => validationInput(event.currentTarget.value)} placeholder='Hvor er du ansat?'></Input>
             
             <Employer2></Employer2>
             <SimpleGrid  columns={2} gap="$4">
-            <SimpleSelect id='ansatMånedDropdown' placeholder="Vælg måned">
+            <SimpleSelect value={month()} onChange={setMonth} id='ansatMånedDropdown' placeholder="Vælg måned">
               <SimpleOption value="Januar">Januar</SimpleOption>
               <SimpleOption value="Febuar">Febuar</SimpleOption>
               <SimpleOption value="Marts">Marts</SimpleOption>
@@ -58,7 +124,7 @@ function Employment(props) {
               <SimpleOption value="December">December</SimpleOption>
             </SimpleSelect>
 
-            <SimpleSelect id='ansatÅrDropdown' placeholder="Vælg år">
+            <SimpleSelect value={year()} onChange={setYear} id='ansatÅrDropdown' placeholder="Vælg år">
               <SimpleOption value="2022">2022</SimpleOption>
               <SimpleOption value="2021">2021</SimpleOption>
               <SimpleOption value="2020">2020</SimpleOption>
@@ -77,14 +143,19 @@ function Employment(props) {
             </SimpleSelect>
             </SimpleGrid>
             <Center>
-              <br />
-              <br />
-              <br />
-              <br />
 
-              <Button id='okButton' colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
 
             </Center>
+              <br />
+      <Text textAlign={"center"} color={"red"} size={"2xl"}>{error()}</Text>
+             
+            <Text textAlign={"center"}>
+              <Button id='okButton'  colorScheme="success" onclick={() => { validationInputMY(0) }}>OK</Button>
+
+            </Text>
+
+
+
             <br />
             
 
@@ -97,7 +168,7 @@ function Employment(props) {
 
           <NoEmployment />
           <SimpleGrid columns={2} gap="$4">
-            <SimpleSelect placeholder="Vælg måned">
+            <SimpleSelect value={month()} onChange={setMonth} placeholder="Vælg måned">
               <SimpleOption value="Januar">Januar</SimpleOption>
               <SimpleOption value="Febuar">Febuar</SimpleOption>
               <SimpleOption value="Marts">Marts</SimpleOption>
@@ -112,7 +183,7 @@ function Employment(props) {
               <SimpleOption value="December">December</SimpleOption>
             </SimpleSelect>
 
-            <SimpleSelect placeholder="Vælg år">
+            <SimpleSelect value={year()} onChange={setYear}  placeholder="Vælg år">
               <SimpleOption value="2022">2022</SimpleOption>
               <SimpleOption value="2021">2021</SimpleOption>
               <SimpleOption value="2020">2020</SimpleOption>
@@ -131,11 +202,13 @@ function Employment(props) {
             </SimpleSelect>
             </SimpleGrid>
               <br />
-              <br />
-              <Center>
-                <Button colorScheme="success" onclick={() => { setX(x() +1); }}>OK</Button>
-              </Center>
-              <br />
+       
+              <Text textAlign={"center"} color={"red"} size={"2xl"}>{error()}</Text>
+             
+            <Text textAlign={"center"}>
+              <Button  colorScheme="success" onclick={() => { validationInputMY(1) }}>OK</Button>
+
+            </Text>
 
           </Show>
         </Match>

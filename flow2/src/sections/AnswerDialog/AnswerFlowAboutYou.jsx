@@ -9,7 +9,8 @@ import Family from './AboutYou/Family';
 import Vehicle from './AboutYou/Vehicle';
 import Employment from './AboutYou/Employment';
 import CoopMembership from './AboutYou/CoopMembership';
-
+import Housing from './AboutYou/Housing';
+import Total from './Total';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
@@ -79,6 +80,14 @@ function AnswerFlowAboutYou(props) {
           setErrorSum("Fejl i indtastede oplysninger: Der skal korrekt indtastes en email ")
           return false;
         }
+        case 4: 
+        if (userObject.Employer.length>1) {
+          setErrorSum("")
+          return true
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Vælg din beskæftigelse")
+          return false;
+        }
         case 5:
           if (userObject.Children.length>1) {
             if (userObject.child.childOne.length>=1 && userObject.Children=="One"){
@@ -94,11 +103,27 @@ function AnswerFlowAboutYou(props) {
               return true;
             }
           }else {
-            setErrorSum("Fejl i indtastede oplysninger: Der skal vælges hvor mange børn du har")
+            setErrorSum("Fejl i indtastede oplysninger: Der skal vælges hvor mange børn du har, og indtastes deres alder")
             return false;
           }
         case 6: 
         if (userObject.Car.length>1) {
+          setErrorSum("")
+          return true
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Der skal vælge en af mulighederne ")
+          return false;
+        }
+        case 7: 
+        if (userObject.Housing.length>1) {
+          setErrorSum("")
+          return true
+        } else {
+          setErrorSum("Fejl i indtastede oplysninger: Der skal vælge en af mulighederne ")
+          return false;
+        }
+        case 8:
+        if (userObject.CoopMemberShip.length>1) {
           setErrorSum("")
           return true
         } else {
@@ -196,19 +221,34 @@ function AnswerFlowAboutYou(props) {
         <Match when={x() === 7}>
           <Show when={x() === 7}>
             <Text>
+              <Housing SetUserObject={SetUserObject} x={x} setX={setX} />
+            </Text>
+          </Show>
+          </Match>
+        <Match when={x() === 8}>
+          <Show when={x() === 8}>
+            <Text>
               <CoopMembership SetUserObject={SetUserObject} x={x} setX={setX} />
             </Text>
           </Show>
         </Match>
        
-        <Match when={x() === 8}>
-          <Show when={x() === 8}>
+        <Match when={x() === 9}>
+          <Show when={x() === 9}>
             <Text>
               <AboutYouDone />
               <br />
               <Center>
-                <Button colorScheme="success" onclick={() => { setX(x() + 2); }}>OK</Button>
+                <Button colorScheme="success" onclick={() => { setX(x() + 1); }}>OK</Button>
               </Center>
+            </Text>
+          </Show>
+        </Match>
+
+        <Match when={x() === 10}>
+          <Show when={x() === 10}>
+            <Text>
+              <Total userObject={userObject} x={x} setX={setX} />
             </Text>
           </Show>
         </Match>
@@ -236,6 +276,7 @@ function AnswerFlowAboutYou(props) {
             <Button id="nextButton" colorScheme="success" onclick={() => { 
               if (checkValidation()) {
                 setX(x() + 1)
+                errorSum("")
               } 
             }}
             >
@@ -245,7 +286,7 @@ function AnswerFlowAboutYou(props) {
       </HStack>
 
       <br />
-      <Progress trackColor="$info3" value={x() * 8}>
+      <Progress trackColor="$info3" value={x() * 10}>
         <ProgressIndicator color="$info9" />
         <br />
       </Progress>

@@ -22,6 +22,8 @@ function CoopMembership(props) {
     const { SetUserObject, x, setX } = props
     const [y, setY] = createSignal(0);
     const [z, setZ] = createSignal(0);
+    const [error,setError] = createSignal("")
+
 
     onMount(() => { notificationService.show({
         render: props => (
@@ -73,8 +75,8 @@ function CoopMembership(props) {
 
                 <HStack spacing="$40">
 
-                    <Button id='coopMedlemJa' leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); }}>Ja</Button>
-                    <Button id='coopMedlemNej' rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); }}>
+                    <Button id='coopMedlemJa' leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); SetUserObject({ CoopMemberShip: "True" });}}>Ja</Button>
+                    <Button id='coopMedlemNej' rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ CoopMemberShip: "false" });}}>
                         Nej
                     </Button>
                 </HStack>
@@ -87,7 +89,8 @@ function CoopMembership(props) {
                         <br />
                         <CoopMember />
                         <br />
-                        <Input id='coopMedlemNrInput' oninput={(event) => SetUserObject({ CoopMember: event.currentTarget.value })} placeholder='Medlemsnummer'></Input>
+                        <Text color={"red"}>{error()}</Text>
+                        <Input id='coopMedlemNrInput' type='number' onInput={(event) => {if (event.currentTarget.value.length==8) {SetUserObject({ CoopMember: event.currentTarget.value }); setX(x() + 1)}else {setError("indtast et 8 cifret kode")}} } placeholder='Medlemsnummer'></Input>
                     </Show>
                 </Match>
             </Switch>

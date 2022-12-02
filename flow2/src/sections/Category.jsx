@@ -5,7 +5,7 @@ import { createStore } from "solid-js/store";
 
 function Category() {
   const [open, setOpene] = createSignal(0);
-  const [userObject, setUserObject] = createStore({CohabitingEmail:"",child:{},Car:""})
+  const [userObject, setUserObject] = createStore({CohabitingEmail:"",child:{childOne:"",childTwo:""},Car:""})
 
   return (
     <div>
