@@ -14,7 +14,7 @@ import Total from './Total';
 
 function AnswerFlowAboutYou(props) {
   const { setOpen, SetUserObject, userObject } = props
-  const [x, setX] = createSignal(3);
+  const [x, setX] = createSignal(1);
   const [errorObject, setErrorObject] = createStore({ name: "Indsæt dit navn", email: "Indsæt din email", phone: "Indsæt kun tal til dit telefonnummer" })
   const [errorSum, setErrorSum] = createSignal("");
 
@@ -32,7 +32,7 @@ function AnswerFlowAboutYou(props) {
         }
           break;
         case 1:
-          if (text.match("[a-å]{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
+          if (text.match(".{1,}[@][a-å]{1,}[.][a-å]{1,}")) {
             SetUserObject({ AboutYouMail: text })
             setErrorObject({email:""})
           } else {
