@@ -18,16 +18,16 @@ function Housing(props) {
 
 
       <SimpleGrid columns={2} gap="$4">
-        <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); }}>I ejerbolig</Button>
+        <Button id='ejerboligButton' leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); }}>I ejerbolig</Button>
 
-        <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"I andelsbolig" })}}>I andelsbolig</Button>
-        <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"Til leje" }) }}>Til leje</Button>
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"Hos forældre" }) }}>Hos forældre</Button>
+        <Button id='andelsboligButton' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"I andelsbolig" })}}>I andelsbolig</Button>
+        <Button id='lejeboligButton' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"Til leje" }) }}>Til leje</Button>
+        <Button id='forældreboligButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"Hos forældre" }) }}>Hos forældre</Button>
 
 
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"På kollegie" }) }}>På kollegie</Button>
+        <Button id='kollegieboligButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Housing:"På kollegie" }) }}>På kollegie</Button>
 
-        <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"C/O" })}}>C/O</Button>
+        <Button id='coboligButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Housing:"C/O" })}}>C/O</Button>
 
 
       </SimpleGrid>
