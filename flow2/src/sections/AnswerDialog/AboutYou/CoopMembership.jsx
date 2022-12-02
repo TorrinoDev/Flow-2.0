@@ -75,8 +75,8 @@ function CoopMembership(props) {
 
                 <HStack spacing="$40">
 
-                    <Button leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); SetUserObject({ CoopMemberShip: "True" });}}>Ja</Button>
-                    <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ CoopMemberShip: "false" });}}>
+                    <Button id='coopMedlemJa' leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setY(1); SetUserObject({ CoopMemberShip: "True" });}}>Ja</Button>
+                    <Button id='coopMedlemNej' rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ CoopMemberShip: "false" });}}>
                         Nej
                     </Button>
                 </HStack>
@@ -90,7 +90,7 @@ function CoopMembership(props) {
                         <CoopMember />
                         <br />
                         <Text color={"red"}>{error()}</Text>
-                        <Input type='number' onInput={(event) => {if (event.currentTarget.value.length==8) {SetUserObject({ CoopMember: event.currentTarget.value }); setX(x() + 1)}else {setError("indtast et 8 cifret kode")}} } placeholder='Medlemsnummer'></Input>
+                        <Input id='coopMedlemNrInput' type='number' onInput={(event) => {if (event.currentTarget.value.length==8) {SetUserObject({ CoopMember: event.currentTarget.value }); setX(x() + 1)}else {setError("indtast et 8 cifret kode")}} } placeholder='Medlemsnummer'></Input>
                     </Show>
                 </Match>
             </Switch>

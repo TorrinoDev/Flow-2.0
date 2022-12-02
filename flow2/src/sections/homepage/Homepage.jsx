@@ -23,7 +23,7 @@ function Homepage() {
                     </Box>
                 </HStack>
                 <SimpleGrid columns={"10"} marginTop="15%" marginBottom={"10%"}>
-                    <Button bgColor={"green"} gridColumn="7" onClick={handleScroll}>Ansøg her</Button>
+                    <Button bgColor={"green"} gridColumn="7" onClick={handleScroll} id="ansøgKnap">Ansøg her</Button>
                 </SimpleGrid>
                 <Box w="100%" h="200px" bg={"darkred"} color="white" textAlign={"center"} marginBottom="50px">placerholdertext</Box>
                 <Show

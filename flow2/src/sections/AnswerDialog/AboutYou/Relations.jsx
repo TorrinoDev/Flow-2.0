@@ -27,11 +27,11 @@ function Relations(props) {
         <AboutYourRelationship />
             <Center>
               <HStack spacing={"0.5rem"}>
-            <Button leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enlig" }) }}>Enlig</Button>
-            <Button leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Relation:"Gift" }) }}>Gift</Button>
-            <Button leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Relation:"Samlever" }) }}>Samlever</Button>
-            <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Relation:"Skilt/separeret" }) }}>Skilt/separeret</Button>
-            <Button leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enke M/K" }) }}>Enke M/K</Button>
+            <Button id='enligButton' leftIcon={<ImCross boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enlig" }) }}>Enlig</Button>
+            <Button id='giftButton' leftIcon={<FaSolidChildDress boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Relation:"Gift" }) }}>Gift</Button>
+            <Button id='samleverButton' leftIcon={<FaSolidChildren boxSize={18} />} onclick={() => { setY(1); SetUserObject({ Relation:"Samlever" }) }}>Samlever</Button>
+            <Button id='skiltButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1);SetUserObject({ Relation:"Skilt/separeret" }) }}>Skilt/separeret</Button>
+            <Button id='enkeButton' leftIcon={<FaSolidUsersRectangle boxSize={18} />} onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enke M/K" }) }}>Enke M/K</Button>
             
 
             </HStack>
@@ -47,8 +47,8 @@ function Relations(props) {
                 
                 <HStack spacing="$40">
                   
-                  <Button leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setZ(1); }}>Ja tak, tilføj medansøger</Button>
-                  <Button rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enlig" }) }}>
+                  <Button id='jaMedansøgerButton' leftIcon={<AiOutlineUserAdd boxSize={18} />} onclick={() => { setZ(1); }}>Ja tak, tilføj medansøger</Button>
+                  <Button id='nejMedansøgerButton' rightIcon={<ImUsers />} variant="outline" onclick={() => { setX(x() + 1); SetUserObject({ Relation:"Enlig" }) }}>
                     Nej tak, jeg ansøger alene
                   </Button>
                   </HStack>
@@ -61,7 +61,7 @@ function Relations(props) {
             
           <div>Ægtefælles/samlevers Email</div>
           <Text color={"red"}>{errorCode()}</Text>
-            <Input oninput={(event) => validation(event.currentTarget.value)} placeholder='Email tilhørende ægtefælle/samlever'></Input>
+            <Input id='medansøgerMailInput' oninput={(event) => validation(event.currentTarget.value)} placeholder='Email tilhørende ægtefælle/samlever'></Input>
                       </Show>
                     </Match>
                   </Switch>

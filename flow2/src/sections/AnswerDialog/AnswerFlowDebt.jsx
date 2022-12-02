@@ -33,8 +33,8 @@ function AnswerFlowDebt(props) {
             <RadioGroup>
                 <Center>
                     <HStack spacing={"2rem"}>
-                        <Radio colorScheme="primary" variant="filled" onInput={()=>setIsTrue(true)} >Ja</Radio>
-                        <Radio colorScheme="primary" variant="filled" onInput={()=>{setIsTrue(false);  setOpen(2);}} >Nej</Radio>
+                        <Radio colorScheme="primary" variant="filled" onInput={()=>setIsTrue(true)} id="debtJa" name='debtJaButton'>Ja</Radio>
+                        <Radio colorScheme="primary" variant="filled" onInput={()=>{setIsTrue(false);  setOpen(2);}} id="debtNej" name='debtNejButton'>Nej</Radio>
                     </HStack>
                 </Center>
             </RadioGroup>
@@ -42,12 +42,12 @@ function AnswerFlowDebt(props) {
             {isTrue() && 
             <div>
               <Text id='errorcodeDept' color={"red"}>{error()}</Text>
-                <Input onInput={(event)=>validation(event.currentTarget.value)} placeholder='Hvor stor er din gæld til det offentlige?' type='number'></Input> 
+                <Input id='debtInput' onInput={(event)=>validation(event.currentTarget.value)} placeholder='Hvor stor er din gæld til det offentlige?' type='number'></Input> 
             </div> }
   <br/>
   <HStack spacing={"28rem"} justifyContent={"end"}>
   <Button colorScheme="danger"  onclick={()=> setOpen(0)}>Tilbage</Button>
-  {isTrue() && <Button colorScheme="success" onclick={()=> next()}>Næste</Button>}
+  {isTrue() && <Button id='nextButton' colorScheme="success" onclick={()=> next()}>Næste</Button>}
   </HStack>
     </div>
   );
