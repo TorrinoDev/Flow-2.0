@@ -1,4 +1,4 @@
-import { createSignal, Show } from 'solid-js';
+import { createSignal, Show, Match } from 'solid-js';
 import { Button, Center, Container, Divider, Text } from '@hope-ui/solid';
 import createCookieStore from "@solid-primitives/cookies-store";
 
