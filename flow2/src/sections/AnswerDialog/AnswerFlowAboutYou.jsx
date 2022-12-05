@@ -150,19 +150,19 @@ function AnswerFlowAboutYou(props) {
             <Text>
               <AboutYouIntro></AboutYouIntro>
               <AboutYouName></AboutYouName>
-              <Text color={"red"}>{errorObject.name}</Text>
+              <Text id='errorNameText' color={"red"}>{errorObject.name}</Text>
               <Input id='userNameInput' oninput={(event) => validation(event.currentTarget.value, 0)} placeholder='Navn'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouMail></AboutYouMail>
-              <Text color={"red"}>{errorObject.email}</Text>
+              <Text id='errorEmailText' color={"red"}>{errorObject.email}</Text>
               <Input id='userEmailInput' oninput={(event) => validation(event.currentTarget.value, 1)} placeholder='E-mail'></Input>
             </Text>
             <br />
             <Text>
               <AboutYouPhone></AboutYouPhone>
-              <Text color={"red"}>{errorObject.phone}</Text>
+              <Text id='errorMobilText' color={"red"}>{errorObject.phone}</Text>
               <Input id='userPhoneInput' oninput={(event) => validation(event.currentTarget.value, 2)} type="number" placeholder='Mobilnummer'></Input>
             </Text>
             <br />
@@ -260,7 +260,7 @@ function AnswerFlowAboutYou(props) {
         
       </Switch>
       <Center>
-        <Text color={"red"} size={"2xl"} fontWeight={"$bold"}>{errorSum()}</Text>
+        <Text id='errorValidationText' color={"red"} size={"2xl"} fontWeight={"$bold"}>{errorSum()}</Text>
       </Center>
 
       <br />
