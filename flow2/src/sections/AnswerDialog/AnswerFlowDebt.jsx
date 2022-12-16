@@ -47,7 +47,7 @@ function AnswerFlowDebt(props) {
   <br/>
   <HStack spacing={"28rem"} >
   <Button colorScheme="danger"  onclick={()=> setOpen(0)}>Tilbage</Button>
-  {isTrue() && <Button colorScheme="success" onclick={()=> next()}>Næste</Button>}
+  {isTrue() && <Button id='nextButton' colorScheme="success" onclick={()=> next()}>Næste</Button>}
   </HStack>
 
  

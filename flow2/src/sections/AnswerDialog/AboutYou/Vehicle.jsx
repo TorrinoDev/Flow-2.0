@@ -77,7 +77,7 @@ function Vehicle(props) {
             <Text textAlign={"center"} color={"red"} size={"2xl"}></Text>
 
             <Text textAlign={"center"}>
-              <Button colorScheme="success" onclick={() => { validationCar(0); }}>OK</Button>
+              <Button id='okButton1' colorScheme="success" onclick={() => { validationCar(0); }}>OK</Button>
 
             </Text>
 
@@ -108,7 +108,7 @@ function Vehicle(props) {
             <Text textAlign={"center"} color={"red"} size={"2xl"}></Text>
 
             <Text textAlign={"center"}>
-              <Button colorScheme="success" onclick={() => { validationCar(1); }}>OK</Button>
+              <Button id='okButton1' colorScheme="success" onclick={() => { validationCar(1); }}>OK</Button>
 
             </Text>
 
@@ -147,7 +147,7 @@ function Vehicle(props) {
             <Text textAlign={"center"} color={"red"} size={"2xl"}></Text>
 
             <Text textAlign={"center"}>
-              <Button colorScheme="success" onclick={() => { validationCar(2); }}>OK</Button>
+              <Button id='okButton1' colorScheme="success" onclick={() => { validationCar(2); }}>OK</Button>
 
             </Text>
 

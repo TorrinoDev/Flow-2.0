@@ -11,16 +11,16 @@ export function Citizenships() {
         <>
             <Center>
                 <HStack spacing={"0.5rem"}>
-                <Button leftIcon={<FaSolidMapPin boxSize={18} />} onClick={() => setStoreUser("Citizenship", "Dansk")} >
+                <Button id='userCitizenD' leftIcon={<FaSolidMapPin boxSize={18} />} onClick={() => setStoreUser("Citizenship", "Dansk")} >
                         Dansk
                     </Button>
-                    <Button
+                    <Button id='userCitizenUMA'
                         leftIcon={<FaSolidUsersRectangle boxSize={18} />} onClick={() => setStoreUser("Citizenship", "Udlænding med arbejdstilladelse")}
                     >
                         Udlænding med <br />
                         arbejdstilladelse
                     </Button>
-                    <Button
+                    <Button id='userCitizenUUA'
                        leftIcon={<AiOutlineStop boxSize={18} />} onClick={() => setStoreUser("Citizenship", "Udlænding uden arbejdstilladelse")}
                     >
                         Udlænding uden <br />
